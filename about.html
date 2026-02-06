@@ -7,6 +7,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Batcave Background -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- About Me Hologram -->
+  <img 
+    src="assets/aboutme.jpg" 
+    class="holo" 
+    style="top:150px; left:50%; transform: translateX(-50%); width:240px;"
+  >
+
+  <!-- Navbar -->
   <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
@@ -14,19 +26,109 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <section class="about-section">
+  <!-- Hero -->
+  <header class="hero">
     <h1>About Me</h1>
+    <p>The story behind the Batcave.</p>
+  </header>
+
+  <!-- About Content -->
+  <section>
+    <h2>Who I Am</h2>
     <p>
-      I’m Marcus, a beginner in cybersecurity and web development.
-      I’m learning Linux, networking, and security through hands-on labs and TryHackMe challenges.
-    </p>
-    <p>
-      I enjoy learning how systems work, building projects from scratch, 
-      and improving my skills step by step.
-    </p>
-    <p>
-      This website is where I document my learning and showcase projects as I grow.
+      I’m Marcus — a beginner in cybersecurity and web development,
+      focused on learning how systems actually work behind the scenes.
     </p>
   </section>
+
+  <section>
+    <h2>What I’m Learning</h2>
+    <p>
+      I’m building skills in Linux, networking, security fundamentals,
+      and hands-on labs like TryHackMe while also learning how to design
+      and build clean, functional websites from scratch.
+    </p>
+  </section>
+
+  <section>
+    <h2>Why This Site Exists</h2>
+    <p>
+      This website is my digital Batcave — a place to document progress,
+      showcase projects, and prove real skills through real work.
+    </p>
+  </section>
+
+  <!-- Batcave Particles -->
+  <script>
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas(){
+      canvas.width = window.innerWidth;
+      canvas.height = document.body.scrollHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    let w = canvas.width;
+    let h = canvas.height;
+
+    const particles = [];
+    const particleCount = 70;
+
+    for(let i=0;i<particleCount;i++){
+      particles.push({
+        x: Math.random()*w,
+        y: Math.random()*h,
+        r: Math.random()*2+1,
+        vx: (Math.random()-0.5)*0.25,
+        vy: (Math.random()-0.5)*0.25,
+        alpha: Math.random()*0.6+0.3
+      });
+    }
+
+    function drawParticles(){
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+
+      for(let i=0;i<particles.length;i++){
+        for(let j=i+1;j<particles.length;j++){
+          const dx = particles[i].x-particles[j].x;
+          const dy = particles[i].y-particles[j].y;
+          const dist = Math.sqrt(dx*dx+dy*dy);
+          if(dist<110){
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0,255,0,${1-dist/110})`;
+            ctx.lineWidth = 1;
+            ctx.moveTo(particles[i].x,particles[i].y);
+            ctx.lineTo(particles[j].x,particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      particles.forEach(p=>{
+        p.x += p.vx;
+        p.y += p.vy;
+        if(p.x<0)p.x=w;
+        if(p.x>w)p.x=0;
+        if(p.y<0)p.y=h;
+        if(p.y>h)p.y=0;
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle = `rgba(0,255,0,${p.alpha})`;
+        ctx.shadowColor = '#0f0';
+        ctx.shadowBlur = 4;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(drawParticles);
+    }
+
+    drawParticles();
+  </script>
+
 </body>
 </html>
+
