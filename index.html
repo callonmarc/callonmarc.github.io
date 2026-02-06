@@ -53,7 +53,6 @@
     const particleCount = 60;
     const particles = [];
     const drawLines = window.innerWidth > 768;
-
     const mouse = { x: null, y: null };
 
     class Particle {
@@ -67,7 +66,6 @@
       }
 
       update() {
-        // Move particle
         this.x += this.speedX;
         this.y += this.speedY;
 
@@ -81,7 +79,7 @@
           const dx = this.x - mouse.x;
           const dy = this.y - mouse.y;
           const dist = Math.sqrt(dx*dx + dy*dy);
-          if(dist < 100) { // repulsion radius
+          if(dist < 100) {
             const angle = Math.atan2(dy, dx);
             const force = (100 - dist)/20;
             this.x += Math.cos(angle) * force;
@@ -105,7 +103,7 @@
     function animate() {
       ctx.clearRect(0,0,width,height);
 
-      // Draw connections on desktop
+      // Draw connecting lines (desktop only)
       if(drawLines) {
         for(let i=0;i<particles.length;i++) {
           for(let j=i+1;j<particles.length;j++) {
@@ -128,7 +126,7 @@
       requestAnimationFrame(animate);
     }
 
-    // Mouse events
+    // Mouse interactions
     window.addEventListener('mousemove', e => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
@@ -140,8 +138,7 @@
     });
 
     window.addEventListener('click', e => {
-      // On click, create a small particle burst
-      for(let i=0;i<10;i++) {
+      for(let i=0;i<10;i++){
         const p = new Particle();
         p.x = e.clientX;
         p.y = e.clientY;
@@ -149,9 +146,28 @@
         p.speedY = (Math.random()-0.5)*4;
         p.alpha = 1;
         particles.push(p);
-        // remove after 1 second
         setTimeout(()=>{ particles.splice(particles.indexOf(p),1); },1000);
       }
+    });
+
+    // Particle bursts on card hover
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseenter', e => {
+        const rect = card.getBoundingClientRect();
+        const cx = rect.left + rect.width/2;
+        const cy = rect.top + rect.height/2;
+
+        for(let i=0;i<8;i++){
+          const p = new Particle();
+          p.x = cx;
+          p.y = cy;
+          p.speedX = (Math.random()-0.5)*3;
+          p.speedY = (Math.random()-0.5)*3;
+          p.alpha = 1;
+          particles.push(p);
+          setTimeout(()=>{ particles.splice(particles.indexOf(p),1); }, 800);
+        }
+      });
     });
 
     window.addEventListener('resize', () => {
