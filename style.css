@@ -26,7 +26,7 @@ body {
   width: 100vw;
   height: 100vh;
   z-index: -1;           /* behind everything */
-  pointer-events: none;  /* clicks pass through */
+  pointer-events: none;  /* allow clicks */
   background: #000;      /* fallback black */
 }
 
@@ -56,7 +56,7 @@ body {
 .navbar a:hover {
   color: #000;
   background-color: #FFD800;
-  box-shadow: 0 0 15px #FFD800;
+  box-shadow: 0 0 15px #FFD800, 0 0 25px #FFD80070;
 }
 
 /* =========================
@@ -67,30 +67,22 @@ body {
   padding: 120px 20px 80px;
 }
 
-.typing {
+.hero h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 2.5rem;
   color: #FFD800;
-  border-right: 2px solid #FFD800;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typing 3s steps(40, end) forwards, blink 1s step-end infinite;
+  margin-bottom: 15px;
 }
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink {
-  50% { border-color: transparent; }
+.hero p {
+  font-size: 1.2rem;
+  color: #E0E0E0;
 }
 
 /* =========================
    Section Titles
 ========================= */
-h1, h2, h3 {
+h2, h3 {
   color: #FFD800;
   margin-bottom: 20px;
   text-align: center;
@@ -114,12 +106,13 @@ h1, h2, h3 {
   width: 260px;
   text-align: center;
   border-radius: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 25px #FFD800, 0 0 50px #FFD80050;
+  box-shadow: 0 0 25px #FFD800, 0 0 50px #FFD80080;
+  border-color: #FFD800;
 }
 
 .card a {
@@ -181,6 +174,14 @@ a:hover {
 
   .hero {
     padding: 80px 20px 50px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
   }
 }
 
