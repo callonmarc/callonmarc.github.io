@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Particle Background -->
+  <canvas id="bgParticles"></canvas>
+
+  <!-- Navigation -->
   <nav class="navbar">
     <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
@@ -14,11 +18,13 @@
     <a href="contact.html">Contact</a>
   </nav>
 
+  <!-- Hero Section -->
   <header class="hero">
     <h1 class="typing">I’m Marcus, learning cybersecurity & web development…</h1>
     <p>Step by step, building projects and skills.</p>
   </header>
 
+  <!-- Projects Preview -->
   <section class="projects-preview">
     <h2>Featured Projects</h2>
     <div class="project-cards">
@@ -32,8 +38,57 @@
         <p>Short description of the project.</p>
         <a href="#">View Project</a>
       </div>
-      <!-- Add more cards as needed -->
     </div>
   </section>
+
+  <!-- Particle Animation Script -->
+  <script>
+    const canvas = document.getElementById('bgParticles');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 80;
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.radius = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if(this.x < 0 || this.x > width || this.y < 0 || this.y > height) this.reset();
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+        ctx.fillStyle = '#FFD800';
+        ctx.fill();
+      }
+    }
+
+    for(let i=0;i<particleCount;i++) particles.push(new Particle());
+
+    function animate() {
+      ctx.clearRect(0,0,width,height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    animate();
+  </script>
 </body>
 </html>
+
