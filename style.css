@@ -65,15 +65,18 @@ body {
 .hero {
   text-align: center;
   padding: 120px 20px 80px;
+  position: relative;
 }
 
 .hero h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 2.5rem;
-  color: #FFD800;
+  color: #CCAA00; /* slightly darker neon */
   margin-bottom: 15px;
-  text-shadow: 0 0 10px #FFD800, 0 0 20px #FFD80050;
+  text-shadow: 0 0 6px #CCAA00, 0 0 15px #CCAA0033;
   animation: pulseGlow 2.5s infinite alternate;
+  position: relative;
+  z-index: 1;
 }
 
 .hero p {
@@ -83,8 +86,8 @@ body {
 
 /* Hero glow pulse animation */
 @keyframes pulseGlow {
-  0% { text-shadow: 0 0 5px #FFD800, 0 0 15px #FFD80040; }
-  100% { text-shadow: 0 0 15px #FFD800, 0 0 35px #FFD80080; }
+  0% { text-shadow: 0 0 4px #CCAA00, 0 0 12px #CCAA0022; }
+  100% { text-shadow: 0 0 10px #CCAA00, 0 0 25px #CCAA0044; }
 }
 
 /* =========================
@@ -194,4 +197,3 @@ a:hover {
     font-size: 1rem;
   }
 }
-
