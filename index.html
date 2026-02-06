@@ -20,7 +20,7 @@
 
   <!-- Hero Section -->
   <header class="hero">
-    <h1 class="typing">I’m Marcus, learning cybersecurity & web development…</h1>
+    <h1>I’m Marcus, learning cybersecurity & web development…</h1>
     <p>Step by step, building projects and skills.</p>
   </header>
 
@@ -38,10 +38,11 @@
         <p>Short description of the project.</p>
         <a href="#">View Project</a>
       </div>
+      <!-- Add more project cards as needed -->
     </div>
   </section>
 
-  <!-- Particle Animation Script -->
+  <!-- JS Particle Animation -->
   <script>
     const canvas = document.getElementById('bgParticles');
     const ctx = canvas.getContext('2d');
@@ -50,7 +51,7 @@
     let height = canvas.height = window.innerHeight;
 
     const particles = [];
-    const particleCount = 80;
+    const particleCount = 100;
 
     class Particle {
       constructor() { this.reset(); }
@@ -60,16 +61,22 @@
         this.radius = Math.random() * 2 + 1;
         this.speedX = (Math.random() - 0.5) * 0.5;
         this.speedY = (Math.random() - 0.5) * 0.5;
+        this.alpha = Math.random() * 0.7 + 0.3;
       }
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
-        if(this.x < 0 || this.x > width || this.y < 0 || this.y > height) this.reset();
+        if(this.x < 0) this.x = width;
+        if(this.x > width) this.x = 0;
+        if(this.y < 0) this.y = height;
+        if(this.y > height) this.y = 0;
       }
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-        ctx.fillStyle = '#FFD800';
+        ctx.fillStyle = `rgba(255, 216, 0, ${this.alpha})`;
+        ctx.shadowColor = '#FFD800';
+        ctx.shadowBlur = 8;
         ctx.fill();
       }
     }
@@ -91,4 +98,3 @@
   </script>
 </body>
 </html>
-
