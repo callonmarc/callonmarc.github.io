@@ -1,149 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Projects | Marcus</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Projects | Marcus</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Batcave Background Canvas -->
-  <canvas id="bgCanvas"></canvas>
 
-  <!-- Floating Project Hologram -->
-  <img src="assets/batman-project.jpg" class="holo" style="top:150px; left:50%; transform: translateX(-50%); width:250px;">
+<!-- Background -->
+<canvas id="bgCanvas"></canvas>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="projects.html">Projects</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<!-- Hologram Image -->
+<img src="assets/batman-project.jpg" class="holo" style="top:120px; width:240px;">
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <h1>My Projects</h1>
-    <p>Take a look at some of the work I’ve done in cybersecurity, web development, and other tech experiments.</p>
-  </header>
+<!-- Navbar -->
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
-  <!-- Projects Section -->
-  <section class="projects-preview">
-    <h2>Featured Projects</h2>
-    <div class="project-cards">
-      <div class="card">
-        <h3>Cybersecurity Lab</h3>
-        <p>Hands-on exercises from TryHackMe to practice real-world security skills.</p>
-        <a href="#">View Project</a>
-      </div>
-      <div class="card">
-        <h3>Portfolio Website</h3>
-        <p>My personal Batcave-themed portfolio to showcase projects and skills.</p>
-        <a href="#">View Project</a>
-      </div>
-      <div class="card">
-        <h3>Linux Network Setup</h3>
-        <p>A small home lab demonstrating networking and Linux server configuration.</p>
-        <a href="#">View Project</a>
-      </div>
-    </div>
-  </section>
+<!-- Hero -->
+<header class="hero">
+  <h1>Projects</h1>
+  <p>Hands-on builds and real learning</p>
+</header>
 
-  <!-- Batcave Particles JS -->
-  <script>
-    const canvas = document.getElementById('bgCanvas');
-    const ctx = canvas.getContext('2d');
+<!-- Projects -->
+<section class="project-cards">
+  <div class="card">
+    <h3>Batcave Portfolio</h3>
+    <p>Custom themed personal website.</p>
+  </div>
 
-    function resizeCanvas(){
-      canvas.width = window.innerWidth;
-      canvas.height = document.body.scrollHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+  <div class="card">
+    <h3>TryHackMe Labs</h3>
+    <p>Hands-on cybersecurity practice.</p>
+  </div>
 
-    let w = canvas.width;
-    let h = canvas.height;
+  <div class="card">
+    <h3>Linux Home Lab</h3>
+    <p>Networking and server experiments.</p>
+  </div>
+</section>
 
-    const particles = [];
-    const particleCount = 80;
+<!-- Scripts -->
+<script>
+const canvas = document.getElementById("bgCanvas");
+const ctx = canvas.getContext("2d");
 
-    for(let i=0;i<particleCount;i++){
-      particles.push({
-        x: Math.random()*w,
-        y: Math.random()*h,
-        r: Math.random()*2+1,
-        vx: (Math.random()-0.5)*0.3,
-        vy: (Math.random()-0.5)*0.3,
-        alpha: Math.random()*0.7+0.3
-      });
-    }
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
 
-    function drawParticles(){
-      ctx.fillStyle = '#000';
-      ctx.fillRect(0,0,canvas.width,canvas.height);
+const particles = Array.from({ length: 60 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  vx: (Math.random() - 0.5) * 0.3,
+  vy: (Math.random() - 0.5) * 0.3
+}));
 
-      for(let i=0;i<particles.length;i++){
-        for(let j=i+1;j<particles.length;j++){
-          const dx = particles[i].x-particles[j].x;
-          const dy = particles[i].y-particles[j].y;
-          const dist = Math.sqrt(dx*dx+dy*dy);
-          if(dist<120){
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(0,255,0,${1-dist/120})`;
-            ctx.lineWidth = 1;
-            ctx.moveTo(particles[i].x,particles[i].y);
-            ctx.lineTo(particles[j].x,particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
+function animate() {
+  ctx.fillStyle = "#000";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach(p=>{
-        p.x += p.vx;
-        p.y += p.vy;
-        if(p.x<0)p.x=w;
-        if(p.x>w)p.x=0;
-        if(p.y<0)p.y=h;
-        if(p.y>h)p.y=0;
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
 
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle = `rgba(0,255,0,${p.alpha})`;
-        ctx.shadowColor = '#0f0';
-        ctx.shadowBlur = 4;
-        ctx.fill();
-      });
+    if (p.x < 0) p.x = canvas.width;
+    if (p.y < 0) p.y = canvas.height;
+    if (p.x > canvas.width) p.x = 0;
+    if (p.y > canvas.height) p.y = 0;
 
-      requestAnimationFrame(drawParticles);
-    }
-
-    drawParticles();
-    <script>
-  // Fade in when page loads
-  window.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('fade-in');
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+    ctx.fillStyle = "#00ff66";
+    ctx.fill();
   });
 
-  // Fade out before navigating away
-  document.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', e => {
-      const href = link.getAttribute('href');
+  requestAnimationFrame(animate);
+}
+animate();
 
-      // Skip external links
-      if (!href || href.startsWith('http')) return;
+window.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("fade-in");
+});
 
-      e.preventDefault();
-      document.body.classList.remove('fade-in');
-      document.body.classList.add('fade-out');
-
-      setTimeout(() => {
-        window.location.href = href;
-      }, 450);
-    });
+document.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", e => {
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("http")) return;
+    e.preventDefault();
+    document.body.classList.remove("fade-in");
+    setTimeout(() => window.location.href = href, 300);
   });
+});
 </script>
 
-  </script>
 </body>
 </html>
-
