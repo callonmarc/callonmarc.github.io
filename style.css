@@ -9,8 +9,8 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #0a0a0a; /* Batcave dark */
-  color: #E0E0E0;
+  background-color: #000; /* Batcave dark */
+  color: #0f0; /* green text for theme */
   line-height: 1.6;
   position: relative;
   overflow-x: hidden;
@@ -20,7 +20,7 @@ body {
    Background Canvas
 ========================= */
 #bgCanvas {
-  position: absolute; /* changed from fixed */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -40,11 +40,11 @@ body {
   padding: 15px 0;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 10;
 }
 
 .navbar a {
-  color: #FFD800;
+  color: #0f0;
   text-decoration: none;
   font-weight: bold;
   padding: 5px 10px;
@@ -54,8 +54,8 @@ body {
 
 .navbar a:hover {
   color: #000;
-  background-color: #FFD800;
-  box-shadow: 0 0 15px #FFD800, 0 0 30px #FFD80088;
+  background-color: #0f0;
+  box-shadow: 0 0 15px #0f0, 0 0 30px #0f0888;
 }
 
 /* =========================
@@ -71,31 +71,41 @@ body {
 .hero h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 3rem;
-  color: #FFD800;
-  text-shadow: 0 0 10px #FFD800, 0 0 25px #FFD80033, 0 0 40px #FFD80022;
-  animation: heroGlow 2s infinite alternate;
+  color: #0f0;
+  text-shadow: 0 0 10px #0f0, 0 0 25px #0f0333, 0 0 40px #0f0222;
   position: relative;
 }
 
 .hero p {
   font-size: 1.3rem;
-  color: #ccc;
-  text-shadow: 0 0 2px #FFD80033;
+  color: #0a0;
+  text-shadow: 0 0 2px #0f0333;
 }
 
-@keyframes heroGlow {
-  0% { text-shadow: 0 0 10px #FFD800, 0 0 25px #FFD80033; }
-  100% { text-shadow: 0 0 20px #FFD800, 0 0 40px #FFD80044; }
+/* =========================
+   Hologram Images
+========================= */
+.holo {
+  position: absolute;
+  opacity: 0.5; 
+  filter: drop-shadow(0 0 15px #0f0);
+  animation: floatHolo 6s ease-in-out infinite alternate;
+}
+
+@keyframes floatHolo {
+  0% { transform: translateY(0px) translateX(-50%); }
+  50% { transform: translateY(-20px) translateX(-50%) rotateZ(2deg); }
+  100% { transform: translateY(0px) translateX(-50%); }
 }
 
 /* =========================
    Section Titles
 ========================= */
 h2, h3 {
-  color: #FFD800;
+  color: #0f0;
   margin-bottom: 20px;
   text-align: center;
-  text-shadow: 0 0 5px #FFD80022;
+  text-shadow: 0 0 5px #0f0222;
 }
 
 /* =========================
@@ -111,34 +121,34 @@ h2, h3 {
 
 .card {
   background-color: #111;
-  border: 2px solid #FFD800;
+  border: 2px solid #0f0;
   padding: 20px;
   width: 260px;
   text-align: center;
   border-radius: 12px;
   transition: all 0.3s ease;
   position: relative;
-  box-shadow: 0 0 5px #FFD80022;
+  box-shadow: 0 0 5px #0f0222;
 }
 
 .card:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 0 25px #FFD800, 0 0 50px #FFD80066;
-  border-color: #FFD800;
+  box-shadow: 0 0 25px #0f0, 0 0 50px #0f0666;
+  border-color: #0f0;
   animation: flicker 0.15s infinite alternate;
 }
 
 .card a {
   display: inline-block;
   margin-top: 10px;
-  color: #FFD800;
+  color: #0f0;
   text-decoration: none;
   font-weight: bold;
 }
 
 .card a:hover {
   text-decoration: underline;
-  text-shadow: 0 0 8px #FFD800;
+  text-shadow: 0 0 8px #0f0;
 }
 
 @keyframes flicker {
@@ -170,3 +180,4 @@ section {
     font-size: 1rem;
   }
 }
+
