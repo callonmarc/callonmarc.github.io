@@ -25,9 +25,9 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;           /* behind everything */
-  pointer-events: none;  /* allow clicks */
-  background: #000;      /* fallback black */
+  z-index: -1;
+  pointer-events: none;
+  background: #000;
 }
 
 /* =========================
@@ -37,7 +37,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 25px;
-  background-color: rgba(0,0,0,0.8); /* slightly transparent */
+  background-color: rgba(0,0,0,0.8);
   padding: 15px 0;
   position: sticky;
   top: 0;
@@ -72,11 +72,19 @@ body {
   font-size: 2.5rem;
   color: #FFD800;
   margin-bottom: 15px;
+  text-shadow: 0 0 10px #FFD800, 0 0 20px #FFD80050;
+  animation: pulseGlow 2.5s infinite alternate;
 }
 
 .hero p {
   font-size: 1.2rem;
   color: #E0E0E0;
+}
+
+/* Hero glow pulse animation */
+@keyframes pulseGlow {
+  0% { text-shadow: 0 0 5px #FFD800, 0 0 15px #FFD80040; }
+  100% { text-shadow: 0 0 15px #FFD800, 0 0 35px #FFD80080; }
 }
 
 /* =========================
@@ -107,12 +115,14 @@ h2, h3 {
   text-align: center;
   border-radius: 12px;
   transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+  position: relative;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px #FFD800, 0 0 50px #FFD80080;
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 0 30px #FFD800, 0 0 60px #FFD80080;
   border-color: #FFD800;
+  z-index: 2;
 }
 
 .card a {
