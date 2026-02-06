@@ -118,6 +118,31 @@
     }
 
     drawParticles();
+    <script>
+  // Fade in when page loads
+  window.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('fade-in');
+  });
+
+  // Fade out before navigating away
+  document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+
+      // Skip external links
+      if (!href || href.startsWith('http')) return;
+
+      e.preventDefault();
+      document.body.classList.remove('fade-in');
+      document.body.classList.add('fade-out');
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 450);
+    });
+  });
+</script>
+
   </script>
 </body>
 </html>
