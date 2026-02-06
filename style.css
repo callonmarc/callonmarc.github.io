@@ -1,4 +1,6 @@
-/* Basic Reset */
+/* =========================
+   Basic Reset & Body
+========================= */
 * {
   margin: 0;
   padding: 0;
@@ -11,26 +13,31 @@ body {
   color: #E0E0E0;
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Particle Background */
+/* =========================
+   Particle Canvas
+========================= */
 #bgParticles {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* behind content */
-  pointer-events: none; /* allow clicks */
-  background: #000; /* fallback */
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;           /* behind everything */
+  pointer-events: none;  /* clicks pass through */
+  background: #000;      /* fallback black */
 }
 
-/* Navbar */
+/* =========================
+   Navbar
+========================= */
 .navbar {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  background-color: #000;
+  gap: 25px;
+  background-color: rgba(0,0,0,0.8); /* slightly transparent */
   padding: 15px 0;
   position: sticky;
   top: 0;
@@ -41,45 +48,61 @@ body {
   color: #FFD800;
   text-decoration: none;
   font-weight: bold;
-  transition: 0.3s;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
 .navbar a:hover {
   color: #000;
   background-color: #FFD800;
-  padding: 5px 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px #FFD800;
+  box-shadow: 0 0 15px #FFD800;
 }
 
-/* Hero Section */
+/* =========================
+   Hero Section
+========================= */
 .hero {
   text-align: center;
-  padding: 100px 20px 50px;
+  padding: 120px 20px 80px;
 }
 
 .typing {
   font-family: 'Orbitron', sans-serif;
   font-size: 2.5rem;
   color: #FFD800;
-  animation: blink 1s step-end infinite;
+  border-right: 2px solid #FFD800;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3s steps(40, end) forwards, blink 1s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 @keyframes blink {
-  50% { border-right: 2px solid #FFD800; }
+  50% { border-color: transparent; }
 }
 
-/* Section Titles */
+/* =========================
+   Section Titles
+========================= */
 h1, h2, h3 {
   color: #FFD800;
   margin-bottom: 20px;
+  text-align: center;
 }
 
-/* Project Cards */
+/* =========================
+   Project Cards
+========================= */
 .project-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 25px;
   justify-content: center;
   padding: 20px;
 }
@@ -88,15 +111,15 @@ h1, h2, h3 {
   background-color: #121212;
   border: 2px solid #FFD800;
   padding: 20px;
-  width: 250px;
+  width: 260px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 12px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px #FFD800;
+  box-shadow: 0 0 25px #FFD800, 0 0 50px #FFD80050;
 }
 
 .card a {
@@ -105,40 +128,59 @@ h1, h2, h3 {
   color: #FFD800;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.3s;
 }
 
 .card a:hover {
   text-decoration: underline;
+  text-shadow: 0 0 10px #FFD800;
 }
 
-/* Sections */
+/* =========================
+   Sections
+========================= */
 section {
-  padding: 50px 20px;
+  padding: 60px 20px;
   text-align: center;
 }
 
-/* Links */
+/* =========================
+   Links
+========================= */
 a {
   color: #FFD800;
+  transition: 0.3s;
 }
 
 a:hover {
   text-decoration: underline;
+  text-shadow: 0 0 8px #FFD800;
 }
 
-/* Contact */
+/* =========================
+   Contact
+========================= */
 .contact-section a {
   color: #FFD800;
+  transition: 0.3s;
 }
 
 .contact-section a:hover {
   text-decoration: underline;
+  text-shadow: 0 0 10px #FFD800;
 }
 
-/* Responsive */
+/* =========================
+   Responsive
+========================= */
 @media (max-width: 768px) {
   .project-cards {
     flex-direction: column;
     align-items: center;
   }
+
+  .hero {
+    padding: 80px 20px 50px;
+  }
 }
+
