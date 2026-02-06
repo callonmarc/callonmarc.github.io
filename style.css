@@ -10,6 +10,19 @@ body {
   background-color: #000;
   color: #E0E0E0;
   line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Particle Background */
+#bgParticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* behind content */
+  pointer-events: none; /* allow clicks */
+  background: #000; /* fallback */
 }
 
 /* Navbar */
