@@ -8,13 +8,8 @@
 </head>
 <body>
 
-<!-- Background -->
 <canvas id="bgCanvas"></canvas>
 
-<!-- Hologram Image -->
-<img src="assets/aboutme.jpg" class="holo" style="top:120px; width:220px;">
-
-<!-- Navbar -->
 <nav class="navbar">
   <a href="index.html">Home</a>
   <a href="projects.html">Projects</a>
@@ -22,27 +17,26 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<!-- Hero -->
 <header class="hero">
   <h1>About Me</h1>
-  <p>Learning cybersecurity & building real skills</p>
+
+  <div class="hero-visual">
+    <img src="assets/aboutme.jpg" class="holo">
+  </div>
+
+  <p class="hero-sub">
+    Learning cybersecurity & systems
+  </p>
 </header>
 
-<!-- About Content -->
 <section>
   <p>
-    I’m Marcus, a beginner in cybersecurity and web development.
-    I focus on learning how systems work through hands-on labs,
-    projects, and experimentation.
-  </p>
-  <br>
-  <p>
-    This site documents my progress and showcases what I’m building
-    as I grow my technical skills.
+    I’m Marcus, learning cybersecurity and web development through
+    hands-on labs and real projects.
   </p>
 </section>
 
-<!-- Scripts -->
+<!-- SAME SCRIPT AS INDEX -->
 <script>
 const canvas = document.getElementById("bgCanvas");
 const ctx = canvas.getContext("2d");
@@ -54,16 +48,16 @@ function resize() {
 resize();
 window.addEventListener("resize", resize);
 
-const particles = Array.from({ length: 60 }, () => ({
+const particles = Array.from({ length: 55 }, () => ({
   x: Math.random() * canvas.width,
   y: Math.random() * canvas.height,
-  vx: (Math.random() - 0.5) * 0.3,
-  vy: (Math.random() - 0.5) * 0.3
+  vx: (Math.random() - 0.5) * 0.25,
+  vy: (Math.random() - 0.5) * 0.25
 }));
 
 function animate() {
   ctx.fillStyle = "#000";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(0,0,canvas.width,canvas.height);
 
   particles.forEach(p => {
     p.x += p.vx;
@@ -75,7 +69,7 @@ function animate() {
     if (p.y > canvas.height) p.y = 0;
 
     ctx.beginPath();
-    ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+    ctx.arc(p.x,p.y,1.3,0,Math.PI*2);
     ctx.fillStyle = "#00ff66";
     ctx.fill();
   });
@@ -94,11 +88,10 @@ document.querySelectorAll("a").forEach(link => {
     if (!href || href.startsWith("http")) return;
     e.preventDefault();
     document.body.classList.remove("fade-in");
-    setTimeout(() => window.location.href = href, 300);
+    setTimeout(() => location.href = href, 300);
   });
 });
 </script>
 
 </body>
 </html>
-
