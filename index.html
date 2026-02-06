@@ -45,8 +45,16 @@
   <script>
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
-    let w = canvas.width = window.innerWidth;
-    let h = canvas.height = window.innerHeight;
+
+    function resizeCanvas(){
+      canvas.width = window.innerWidth;
+      canvas.height = document.body.scrollHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    let w = canvas.width;
+    let h = canvas.height;
 
     const particles = [];
     const particleCount = 80;
@@ -62,9 +70,9 @@
       });
     }
 
-    function draw(){
+    function drawParticles(){
       ctx.fillStyle = '#0a0a0a';
-      ctx.fillRect(0,0,w,h);
+      ctx.fillRect(0,0,canvas.width,canvas.height);
 
       // Lines for Batcave tech effect
       for(let i=0;i<particles.length;i++){
@@ -100,16 +108,10 @@
         ctx.fill();
       });
 
-      requestAnimationFrame(draw);
+      requestAnimationFrame(drawParticles);
     }
 
-    window.addEventListener('resize', ()=>{
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    });
-
-    draw();
+    drawParticles();
   </script>
 </body>
 </html>
-
