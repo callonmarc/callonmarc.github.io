@@ -38,11 +38,11 @@
         <p>Short description of the project.</p>
         <a href="#">View Project</a>
       </div>
-      <!-- Add more cards here -->
+      <!-- Add more project cards as needed -->
     </div>
   </section>
 
-  <!-- JS Particle Animation -->
+  <!-- Optimized Particle JS -->
   <script>
     const canvas = document.getElementById('bgParticles');
     const ctx = canvas.getContext('2d');
@@ -50,8 +50,9 @@
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
 
-    const particleCount = 100;
+    const particleCount = 60; // fewer particles = faster
     const particles = [];
+    const drawLines = window.innerWidth > 768; // lines only on desktop
 
     class Particle {
       constructor() {
@@ -62,48 +63,52 @@
         this.speedY = (Math.random() - 0.5) * 0.5;
         this.alpha = Math.random() * 0.7 + 0.3;
       }
+
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
+
         if(this.x < 0) this.x = width;
         if(this.x > width) this.x = 0;
         if(this.y < 0) this.y = height;
         if(this.y > height) this.y = 0;
       }
+
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
         ctx.fillStyle = `rgba(255,216,0,${this.alpha})`;
         ctx.shadowColor = '#FFD800';
-        ctx.shadowBlur = 8;
+        ctx.shadowBlur = 4; // faster
         ctx.fill();
       }
     }
 
-    for(let i=0;i<particleCount;i++) particles.push(new Particle());
+    for(let i = 0; i < particleCount; i++) particles.push(new Particle());
 
     function animate() {
-      ctx.clearRect(0,0,width,height);
+      ctx.clearRect(0, 0, width, height);
 
-      // Draw connections between close particles
-      for(let i=0; i<particles.length; i++) {
-        for(let j=i+1; j<particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx*dx + dy*dy);
-          if(dist < 120) {
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(255,216,0,${1 - dist/120})`;
-            ctx.lineWidth = 1;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
+      // Draw connections (desktop only)
+      if(drawLines) {
+        for(let i=0; i<particles.length; i++) {
+          for(let j=i+1; j<particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+            if(dist < 120) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(255,216,0,${1 - dist/120})`;
+              ctx.lineWidth = 1;
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
           }
         }
       }
 
       particles.forEach(p => { p.update(); p.draw(); });
-
       requestAnimationFrame(animate);
     }
 
