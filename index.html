@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Marcus | Home</title>
+  <title>Marcus | Batcave</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Batcave Background Canvas -->
   <canvas id="bgCanvas"></canvas>
+
+  <!-- Hologram -->
+  <img src="assets/batman-holo.jpg" class="holo" style="top:120px; left:50%; transform: translateX(-50%); width:250px;">
 
   <!-- Navbar -->
   <nav class="navbar">
@@ -20,8 +23,8 @@
 
   <!-- Hero Section -->
   <header class="hero">
-    <h1>I’m Marcus, learning cybersecurity & web development…</h1>
-    <p>Step by step, building projects and skills.</p>
+    <h1>Welcome to the Batcave</h1>
+    <p>I’m Marcus, learning cybersecurity & web development…</p>
   </header>
 
   <!-- Projects Section -->
@@ -41,7 +44,7 @@
     </div>
   </section>
 
-  <!-- Batcave JS -->
+  <!-- Batcave Particles JS -->
   <script>
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
@@ -71,10 +74,9 @@
     }
 
     function drawParticles(){
-      ctx.fillStyle = '#0a0a0a';
+      ctx.fillStyle = '#000';
       ctx.fillRect(0,0,canvas.width,canvas.height);
 
-      // Lines for Batcave tech effect
       for(let i=0;i<particles.length;i++){
         for(let j=i+1;j<particles.length;j++){
           const dx = particles[i].x-particles[j].x;
@@ -82,7 +84,7 @@
           const dist = Math.sqrt(dx*dx+dy*dy);
           if(dist<120){
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(255,216,0,${1-dist/120})`;
+            ctx.strokeStyle = `rgba(0,255,0,${1-dist/120})`;
             ctx.lineWidth = 1;
             ctx.moveTo(particles[i].x,particles[i].y);
             ctx.lineTo(particles[j].x,particles[j].y);
@@ -91,7 +93,6 @@
         }
       }
 
-      // Draw particles
       particles.forEach(p=>{
         p.x += p.vx;
         p.y += p.vy;
@@ -102,8 +103,8 @@
 
         ctx.beginPath();
         ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle = `rgba(255,216,0,${p.alpha})`;
-        ctx.shadowColor = '#FFD800';
+        ctx.fillStyle = `rgba(0,255,0,${p.alpha})`;
+        ctx.shadowColor = '#0f0';
         ctx.shadowBlur = 4;
         ctx.fill();
       });
@@ -115,3 +116,4 @@
   </script>
 </body>
 </html>
+
