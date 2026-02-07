@@ -21,12 +21,12 @@ body {
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.55);
   z-index: -2;
   pointer-events: none;
 }
 
-/* Navbar – clean, reference-style (simple glow links + underline hover) */
+/* Navbar – clean, minimal, reference-like */
 .navbar {
   position: fixed;
   top: 0;
@@ -34,36 +34,40 @@ body {
   right: 0;
   z-index: 100;
   display: flex;
-  justify-content: center;
-  gap: 4rem;
-  padding: 1.8rem 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(12px);
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(0, 255, 136, 0.25);
 }
 
-.navbar a {
+.nav-links {
+  display: flex;
+  gap: 4.5rem;
+}
+
+.nav-links a {
   color: #00ff88;
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.15rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  text-shadow: 0 0 10px #0f0;
+  text-shadow: 0 0 8px #0f0;
   transition: all 0.3s;
-  font-family: 'Roboto Mono', monospace; /* hacker font */
   position: relative;
 }
 
-.navbar a:hover {
+.nav-links a:hover {
   color: #00ffcc;
-  text-shadow: 0 0 20px #0ff, 0 0 35px #0ff;
+  text-shadow: 0 0 18px #0ff;
 }
 
-.navbar a::after {
+.nav-links a::after {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: -6px;
   left: 0;
   width: 0;
   height: 2px;
@@ -71,20 +75,28 @@ body {
   transition: width 0.4s ease;
 }
 
-.navbar a:hover::after {
+.nav-links a:hover::after {
   width: 100%;
 }
 
-/* Hero – adjusted for better balance */
+.search-icon {
+  color: #00ff88;
+  font-size: 1.4rem;
+  font-family: 'Roboto Mono', monospace;
+  text-shadow: 0 0 10px #0f0;
+  cursor: default; /* Not clickable, just visual like ref */
+}
+
+/* Hero / main */
 .hero {
   position: relative;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Push content lower so Batman dominates top/center */
+  justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 2rem 4rem;
+  padding: 0 2rem;
 }
 
 .batman-hero {
@@ -93,33 +105,34 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center 10%; /* Focus on upper body/head */
-  opacity: 0.58;
+  object-position: center 8%;
+  opacity: 0.62;
   pointer-events: none;
   z-index: 1;
   filter:
-    brightness(2.0)
+    brightness(2.1)
     contrast(1.4)
-    drop-shadow(0 0 90px #0f0)
-    drop-shadow(0 0 180px #0f0);
+    drop-shadow(0 0 100px #0f0)
+    drop-shadow(0 0 200px #0f0);
   mix-blend-mode: screen;
-  animation: glowPulse 12s ease-in-out infinite;
+  animation: glowPulse 14s ease-in-out infinite;
 }
 
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.52; }
-  50%      { opacity: 0.65; }
+  0%, 100% { opacity: 0.56; }
+  50%      { opacity: 0.68; }
 }
 
 .title-group {
   z-index: 5;
-  margin-bottom: 2rem; /* Space from bottom */
+  position: relative;
+  margin-top: auto; /* Helps push down slightly if needed */
 }
 
 h1 {
-  font-size: clamp(5rem, 12vw, 10rem); /* Smaller max – feels prominent but not huge */
-  color: rgba(0, 255, 204, 0.92);
-  text-shadow: 0 0 35px #0ff, 0 0 70px #0ff, 0 0 120px #0f0;
+  font-size: clamp(6rem, 13vw, 11rem);
+  color: rgba(0, 255, 204, 0.9);
+  text-shadow: 0 0 30px #0ff, 0 0 60px #0ff, 0 0 100px #0f0;
   line-height: 0.9;
   letter-spacing: -5px;
   margin: 0;
@@ -127,104 +140,107 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(3rem, 8vw, 7rem);
-  color: rgba(0, 255, 170, 0.94);
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
+  color: rgba(0, 255, 170, 0.92);
   text-shadow: 0 0 25px #0f0, 0 0 50px #0f0;
-  margin-top: -1.5rem;
-  letter-spacing: 6px;
-  opacity: 0.95;
+  margin-top: -2rem;
+  letter-spacing: 5px;
 }
 
 .subtitle {
-  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
   color: #00ffbb;
-  text-shadow: 0 0 18px #0ff;
+  text-shadow: 0 0 15px #0ff;
   margin-top: 2rem;
   letter-spacing: 3px;
-  opacity: 0.98;
+  opacity: 0.96;
 }
 
-/* Scattered code – subtle */
+/* Scattered code */
 .code-snippet {
   position: absolute;
   color: #008844;
   font-family: 'Roboto Mono', monospace;
-  font-size: 1rem;
+  font-size: 0.95rem;
   pointer-events: none;
   white-space: pre;
   text-shadow: 0 0 8px #0f0;
   z-index: 3;
-  opacity: 0.5;
+  opacity: 0.45;
 }
 
-/* Desktop boosts (but controlled) */
+/* Desktop adjustments */
 @media (min-width: 900px) {
   .navbar {
-    gap: 5.5rem;
-    padding: 2.2rem 0;
+    padding: 2rem 6rem;
+    gap: 6rem;
   }
 
-  .navbar a {
-    font-size: 1.35rem;
+  .nav-links a {
+    font-size: 1.3rem;
   }
 
   h1 {
-    font-size: clamp(8rem, 14vw, 13rem); /* Big but balanced – not wall-to-wall */
-    letter-spacing: -8px;
+    font-size: clamp(9rem, 15vw, 14rem);
   }
 
   h2 {
-    font-size: clamp(4.5rem, 9vw, 9rem);
-    margin-top: -2rem;
+    font-size: clamp(5rem, 10vw, 10rem);
+    margin-top: -2.5rem;
   }
 
   .subtitle {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-top: 3rem;
+    font-size: clamp(2rem, 4vw, 3.2rem);
   }
 
   .batman-hero {
-    opacity: 0.62;
-    filter: brightness(2.1) contrast(1.45) drop-shadow(0 0 110px #0f0) drop-shadow(0 0 220px #0f0);
+    opacity: 0.65;
   }
 }
 
-/* Mobile/small */
+/* Mobile */
 @media (max-width: 768px) {
   .navbar {
-    gap: 1.5rem;
-    padding: 1.2rem 0;
+    padding: 1rem 2rem;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
-  .navbar a {
+  .nav-links {
+    gap: 2rem;
+  }
+
+  .nav-links a {
     font-size: 1rem;
   }
 
-  .hero {
-    padding-bottom: 3rem;
+  .search-icon {
+    display: none; /* Hide on small screens if clutter */
   }
 
   h1 {
-    font-size: clamp(4.5rem, 15vw, 9rem);
+    font-size: clamp(5rem, 16vw, 10rem);
   }
 
   h2 {
-    font-size: clamp(2.8rem, 10vw, 6rem);
+    font-size: clamp(3rem, 10vw, 7rem);
   }
 
   .subtitle {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+  }
+
+  .hero {
+    padding: 0 1.5rem 4rem;
   }
 }
 
 /* Fade-in */
 body.loaded {
-  animation: fadeIn 1.5s ease-out;
+  animation: fadeIn 1.8s ease-out;
 }
 
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-
