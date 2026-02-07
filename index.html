@@ -9,72 +9,63 @@
 </head>
 <body>
 
-  <!-- Matrix rain canvas -->
-  <canvas id="bgCanvas"></canvas>
+  <!-- Matrix rain -->
+  <canvas id="matrix"></canvas>
 
   <!-- Dark overlay -->
   <div class="overlay"></div>
 
-  <!-- Top nav bar – minimal, centered, subtle -->
+  <!-- Top nav bar – exact reference style -->
   <nav class="top-nav">
     <div class="nav-links">
-      <a href="index.html">HOME</a>
-      <a href="projects.html">PROJECTS</a>
-      <a href="about.html">ABOUT</a>
-      <a href="contact.html">CONTACT</a>
+      <a href="#">HOME</a>
+      <a href="#">WORK</a>
+      <a href="#">ABOUT</a>
+      <a href="#">CONTACT</a>
     </div>
-    <div class="search-icon">Q</div>
+    <div class="search-q">Q</div>
   </nav>
 
-  <!-- Main area: Batman right, text left -->
+  <!-- Main hero -->
   <main class="hero">
-    <img src="assets/batman-holo.PNG" alt="Batman Silhouette" class="batman-hero">
+    <img src="assets/batman-holo.PNG" alt="Batman" class="batman">
 
-    <!-- Text on left, white glow, left-aligned -->
-    <div class="title-content">
+    <div class="title-block">
       <h1>MARCUS</h1>
       <h2>PORTFOLIO</h2>
-      <p class="subtitle">Cybersecurity • Web Development • Tech</p>
+      <p class="tagline">Cybersecurity · Web Development · Tech</p>
     </div>
   </main>
 
-  <!-- Minimal scattered code (edges only) -->
-  <div class="code-snippet" style="top: 10%; left: 4%; opacity: 0.3;">
-    <pre><code>initShadowRun();
-encryptPayload();
-</code></pre>
-  </div>
+  <!-- Scattered code snippets (subtle) -->
+  <div class="code-float" style="top:10%; left:5%;">function shadowRun() { ... }</div>
+  <div class="code-float" style="top:40%; right:8%; opacity:0.6;">class Batcave { init() {} }</div>
+  <div class="code-float" style="bottom:25%; left:12%;">batSignal.status = "active"</div>
 
-  <div class="code-snippet" style="top: 50%; right: 5%; opacity: 0.28; transform: rotate(2deg);">
-    <pre><code>function deploy() {
-  return "justice";
-}
-</code></pre>
-  </div>
-
-  <!-- Matrix rain script (cleaner fade) -->
   <script>
-    const canvas = document.getElementById("bgCanvas");
-    const ctx = canvas.getContext("2d");
+    // Matrix rain
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
 
-    function resize() {
-      canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    window.addEventListener('resize', () => {
       canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener("resize", resize);
+      canvas.width = window.innerWidth;
+    });
 
-    const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()".split("");
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()'.split('');
     const fontSize = 14;
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops = new Array(columns).fill(1);
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
 
     function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.07)"; // Stronger fade for less density
+      ctx.fillStyle = 'rgba(0,0,0,0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = "#0f0";
-      ctx.font = fontSize + "px 'Roboto Mono', monospace";
+      ctx.fillStyle = '#0f0';
+      ctx.font = fontSize + 'px monospace';
 
       for (let i = 0; i < drops.length; i++) {
         const text = chars[Math.floor(Math.random() * chars.length)];
@@ -88,7 +79,7 @@ encryptPayload();
       }
     }
 
-    setInterval(draw, 55); // Slower = less crowded
+    setInterval(draw, 35);
   </script>
 </body>
 </html>
