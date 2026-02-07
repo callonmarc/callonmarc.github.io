@@ -21,12 +21,12 @@ body {
 .overlay {
   position: fixed;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.4) 100%);
+  background: rgba(0, 0, 0, 0.5);
   z-index: -2;
   pointer-events: none;
 }
 
-/* Navbar – simpler, reference-like (no boxes, glow underline on hover) */
+/* Navbar – clean, reference-style (simple glow links + underline hover) */
 .navbar {
   position: fixed;
   top: 0;
@@ -35,55 +35,56 @@ body {
   z-index: 100;
   display: flex;
   justify-content: center;
-  gap: 3rem;
-  padding: 1.5rem 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+  gap: 4rem;
+  padding: 1.8rem 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.25);
 }
 
 .navbar a {
-  color: #00ff9f;
+  color: #00ff88;
   text-decoration: none;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-shadow: 0 0 10px #0f0;
   transition: all 0.3s;
+  font-family: 'Roboto Mono', monospace; /* hacker font */
   position: relative;
 }
 
 .navbar a:hover {
-  color: #00ffff;
-  text-shadow: 0 0 20px #0ff, 0 0 30px #0ff;
+  color: #00ffcc;
+  text-shadow: 0 0 20px #0ff, 0 0 35px #0ff;
 }
 
 .navbar a::after {
   content: '';
   position: absolute;
-  bottom: -6px;
+  bottom: -8px;
   left: 0;
   width: 0;
   height: 2px;
-  background: #00ffff;
-  transition: width 0.4s;
+  background: #00ffcc;
+  transition: width 0.4s ease;
 }
 
 .navbar a:hover::after {
   width: 100%;
 }
 
-/* Hero – mobile base */
+/* Hero – adjusted for better balance */
 .hero {
   position: relative;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end; /* Push content lower so Batman dominates top/center */
   align-items: center;
   text-align: center;
-  padding: 5rem 1.5rem 2rem;
+  padding: 0 2rem 4rem;
 }
 
 .batman-hero {
@@ -92,113 +93,129 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center 12%; /* Better centering */
-  opacity: 0.55; /* Slightly more visible now */
+  object-position: center 10%; /* Focus on upper body/head */
+  opacity: 0.58;
   pointer-events: none;
   z-index: 1;
-  filter: brightness(1.9) contrast(1.35) drop-shadow(0 0 80px #0f0) drop-shadow(0 0 160px #0f0);
+  filter:
+    brightness(2.0)
+    contrast(1.4)
+    drop-shadow(0 0 90px #0f0)
+    drop-shadow(0 0 180px #0f0);
   mix-blend-mode: screen;
   animation: glowPulse 12s ease-in-out infinite;
 }
 
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.50; }
-  50%      { opacity: 0.62; }
+  0%, 100% { opacity: 0.52; }
+  50%      { opacity: 0.65; }
 }
 
 .title-group {
   z-index: 5;
+  margin-bottom: 2rem; /* Space from bottom */
 }
 
 h1 {
-  font-size: clamp(5rem, 14vw, 12rem); /* Reduced max size significantly */
-  color: rgba(0, 255, 204, 0.95); /* Slight transparency + cyan tint */
-  text-shadow: 0 0 30px #0ff, 0 0 60px #0ff, 0 0 100px #0f0;
+  font-size: clamp(5rem, 12vw, 10rem); /* Smaller max – feels prominent but not huge */
+  color: rgba(0, 255, 204, 0.92);
+  text-shadow: 0 0 35px #0ff, 0 0 70px #0ff, 0 0 120px #0f0;
   line-height: 0.9;
-  letter-spacing: -4px;
+  letter-spacing: -5px;
   margin: 0;
   mix-blend-mode: screen;
-  opacity: 0.92; /* Less dominant */
 }
 
 h2 {
-  font-size: clamp(3rem, 9vw, 8rem); /* Much smaller */
-  color: rgba(0, 255, 170, 0.95);
+  font-size: clamp(3rem, 8vw, 7rem);
+  color: rgba(0, 255, 170, 0.94);
   text-shadow: 0 0 25px #0f0, 0 0 50px #0f0;
-  margin-top: -1.8rem;
-  letter-spacing: 5px;
-  opacity: 0.94;
+  margin-top: -1.5rem;
+  letter-spacing: 6px;
+  opacity: 0.95;
 }
 
 .subtitle {
-  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
   color: #00ffbb;
-  text-shadow: 0 0 20px #0ff;
-  z-index: 5;
-  margin-top: 2.5rem;
-  letter-spacing: 4px;
-  line-height: 1.4;
+  text-shadow: 0 0 18px #0ff;
+  margin-top: 2rem;
+  letter-spacing: 3px;
+  opacity: 0.98;
 }
 
-/* Scattered code */
+/* Scattered code – subtle */
 .code-snippet {
   position: absolute;
-  color: #009955;
+  color: #008844;
   font-family: 'Roboto Mono', monospace;
   font-size: 1rem;
   pointer-events: none;
   white-space: pre;
-  text-shadow: 0 0 10px #0f0;
+  text-shadow: 0 0 8px #0f0;
   z-index: 3;
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
-/* Desktop scaling */
+/* Desktop boosts (but controlled) */
 @media (min-width: 900px) {
   .navbar {
-    gap: 5rem;
-    padding: 2rem 0;
+    gap: 5.5rem;
+    padding: 2.2rem 0;
   }
 
   .navbar a {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
 
   h1 {
-    font-size: clamp(8rem, 16vw, 14rem); /* Still big, but not screen-filling */
+    font-size: clamp(8rem, 14vw, 13rem); /* Big but balanced – not wall-to-wall */
     letter-spacing: -8px;
-    text-shadow: 0 0 45px #0ff, 0 0 90px #0ff, 0 0 150px #0f0;
   }
 
   h2 {
-    font-size: clamp(4.5rem, 10vw, 9rem);
-    margin-top: -2.5rem;
-    letter-spacing: 8px;
+    font-size: clamp(4.5rem, 9vw, 9rem);
+    margin-top: -2rem;
   }
 
   .subtitle {
-    font-size: clamp(2rem, 4.5vw, 3.5rem);
-    margin-top: 3.5rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-top: 3rem;
   }
 
   .batman-hero {
-    opacity: 0.58;
-    filter: brightness(2.0) contrast(1.4) drop-shadow(0 0 100px #0f0) drop-shadow(0 0 200px #0f0);
-  }
-
-  .code-snippet {
-    font-size: 1.15rem;
-    opacity: 0.6;
+    opacity: 0.62;
+    filter: brightness(2.1) contrast(1.45) drop-shadow(0 0 110px #0f0) drop-shadow(0 0 220px #0f0);
   }
 }
 
-/* Small screens */
-@media (max-width: 480px) {
-  h1 { font-size: clamp(4rem, 14vw, 8rem); letter-spacing: -3px; }
-  h2 { font-size: clamp(2.2rem, 8vw, 5rem); margin-top: -1rem; }
-  .subtitle { font-size: 1.4rem; margin-top: 1.8rem; }
-  .navbar { gap: 1rem; padding: 1rem 0; }
-  .navbar a { font-size: 0.95rem; padding: 0.4rem 0.8rem; }
+/* Mobile/small */
+@media (max-width: 768px) {
+  .navbar {
+    gap: 1.5rem;
+    padding: 1.2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .navbar a {
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding-bottom: 3rem;
+  }
+
+  h1 {
+    font-size: clamp(4.5rem, 15vw, 9rem);
+  }
+
+  h2 {
+    font-size: clamp(2.8rem, 10vw, 6rem);
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+  }
 }
 
 /* Fade-in */
@@ -210,3 +227,4 @@ body.loaded {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
