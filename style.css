@@ -22,7 +22,7 @@ body {
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.78);
+  background: rgba(0, 0, 0, 0.78); /* Very dark for white text contrast */
   z-index: -2;
   pointer-events: none;
 }
@@ -34,11 +34,12 @@ body {
   right: 0;
   z-index: 100;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  padding: 1.8rem 4rem;
-  background: transparent;
-  backdrop-filter: none;
+  padding: 1.8rem 5rem;
+  background: transparent; /* No background */
+  backdrop-filter: blur(18px); /* Heavy blur for floating on rain */
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: none;
 }
 
@@ -48,19 +49,19 @@ body {
 }
 
 .nav-links a {
-  color: #ffffff;
+  color: #ffffff; /* pure white */
   text-decoration: none;
   font-family: 'Roboto Mono', monospace;
   font-size: 1rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+  text-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff; /* glowing white */
   transition: all 0.3s;
   position: relative;
 }
 
 .nav-links a:hover {
-  text-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff;
+  text-shadow: 0 0 16px #ffffff, 0 0 32px #ffffff;
 }
 
 .nav-links a::after {
@@ -78,6 +79,14 @@ body {
   width: 100%;
 }
 
+.search-q {
+  color: #00ff88;
+  font-size: 1.3rem;
+  text-shadow: 0 0 10px #ffffff;
+  cursor: default;
+  opacity: 0.7;
+}
+
 /* Hero: text far left – batman far right */
 .hero {
   position: relative;
@@ -85,7 +94,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12rem 0 10rem; /* Extra left/right space */
+  padding: 0 10rem 0 4rem; /* left padding small = text near left */
 }
 
 .batman-hero {
@@ -94,36 +103,36 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: right -10%;
-  opacity: 0.80;
+  object-position: right -5%; /* Farther right */
+  opacity: 0.78;
   pointer-events: none;
   z-index: 1;
   filter:
-    brightness(2.4)
-    contrast(1.6)
-    drop-shadow(0 0 180px #0f0)
-    drop-shadow(0 0 360px #0f0);
+    brightness(2.3)
+    contrast(1.55)
+    drop-shadow(0 0 160px #0f0)
+    drop-shadow(0 0 320px #0f0);
   mix-blend-mode: screen;
   animation: pulse 20s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.75; }
-  50% { opacity: 0.85; }
+  0%, 100% { opacity: 0.72; }
+  50% { opacity: 0.84; }
 }
 
-/* Text far left – smaller, pure white glow */
+/* Text on left – smaller, pure white glow, no cutoff */
 .title-left {
   z-index: 5;
   text-align: left;
-  max-width: 32%;
-  margin-left: -8.5rem; /* Pushed left more */
+  max-width: 35%;
+  margin-left: 2rem; /* Small left inset – adjust lower for more left */
 }
 
 h1 {
-  font-size: clamp(3rem, 6vw, 5.5rem); /* Smaller */
+  font-size: clamp(4.5rem, 8vw, 7.5rem); /* Smaller */
   color: #ffffff;
-  text-shadow: 0 0 18px #ffffff, 0 0 35px #ffffff;
+  text-shadow: 0 0 18px #ffffff, 0 0 36px #ffffff;
   line-height: 0.95;
   letter-spacing: -3px;
   margin: 0 0 0.4rem;
@@ -131,7 +140,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(1rem, 3vw, 3rem); /* Much smaller than h1 */
+  font-size: clamp(2.4rem, 5vw, 4.8rem); /* Smaller than h1 */
   color: #ffffff;
   text-shadow: 0 0 14px #ffffff, 0 0 28px #ffffff;
   margin: 0 0 1.2rem;
@@ -139,49 +148,4 @@ h2 {
 }
 
 .tagline {
-  font-size: clamp(0.7rem, 1.8vw, 1.3rem);
-  color: #eeeeee;
-  text-shadow: 0 0 8px #ffffff;
-  letter-spacing: 1.5px;
-  line-height: 1.8; /* No cutoff */
-  white-space: nowrap;
-  overflow: visible;
-}
-
-/* Scattered code – almost invisible */
-.code-float {
-  position: absolute;
-  color: #003311;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 0.75rem;
-  pointer-events: none;
-  white-space: pre;
-  text-shadow: 0 0 3px #0f0;
-  z-index: 2;
-  opacity: 0.18;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .top-nav {
-    padding: 1rem 1.5rem;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .hero {
-    justify-content: center;
-    padding: 0 2rem;
-    text-align: center;
-  }
-
-  .title-left {
-    text-align: center;
-    max-width: 90%;
-    margin-left: 0;
-  }
-
-  h1 { font-size: clamp(4rem, 12vw, 7rem); }
-  h2 { font-size: clamp(2.2rem, 7vw, 4.5rem); }
-  .tagline { font-size: 1.3rem; white-space: normal; line-height: 1.5; }
-}
+  font-size: clamp(
