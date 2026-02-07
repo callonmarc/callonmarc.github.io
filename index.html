@@ -9,13 +9,10 @@
 </head>
 <body>
 
-  <!-- Matrix rain -->
   <canvas id="matrix"></canvas>
-
-  <!-- Dark overlay -->
   <div class="overlay"></div>
 
-  <!-- Top nav bar – exact reference style -->
+  <!-- Top nav – floating, reference style -->
   <nav class="top-nav">
     <div class="nav-links">
       <a href="#">HOME</a>
@@ -26,24 +23,23 @@
     <div class="search-q">Q</div>
   </nav>
 
-  <!-- Main hero -->
   <main class="hero">
-    <img src="assets/batman-holo.PNG" alt="Batman" class="batman">
+    <!-- Batman on right -->
+    <img src="assets/batman-holo.jpg" alt="Batman" class="batman-hero">
 
-    <div class="title-block">
+    <!-- Text on left, glowing white, no bg box -->
+    <div class="title-left">
       <h1>MARCUS</h1>
       <h2>PORTFOLIO</h2>
       <p class="tagline">Cybersecurity · Web Development · Tech</p>
     </div>
   </main>
 
-  <!-- Scattered code snippets (subtle) -->
-  <div class="code-float" style="top:10%; left:5%;">function shadowRun() { ... }</div>
-  <div class="code-float" style="top:40%; right:8%; opacity:0.6;">class Batcave { init() {} }</div>
-  <div class="code-float" style="bottom:25%; left:12%;">batSignal.status = "active"</div>
+  <!-- Very subtle scattered code -->
+  <div class="code-float" style="top:12%; left:6%; opacity:0.25;">initShadow();</div>
+  <div class="code-float" style="top:55%; right:8%; opacity:0.22;">encryptAll();</div>
 
   <script>
-    // Matrix rain
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
 
@@ -56,12 +52,12 @@
     });
 
     const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()'.split('');
-    const fontSize = 14;
+    const fontSize = 13; // smaller = less dense
     const columns = canvas.width / fontSize;
     const drops = Array(Math.floor(columns)).fill(1);
 
     function draw() {
-      ctx.fillStyle = 'rgba(0,0,0,0.05)';
+      ctx.fillStyle = 'rgba(0,0,0,0.08)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = '#0f0';
@@ -79,7 +75,7 @@
       }
     }
 
-    setInterval(draw, 35);
+    setInterval(draw, 60); // slower = cleaner
   </script>
 </body>
 </html>
