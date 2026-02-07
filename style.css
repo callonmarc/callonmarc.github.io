@@ -1,13 +1,11 @@
-/* style.css - Full rewrite for clean cyberpunk Batcave */
+/* style.css - Cleaned & fixed for projects page */
 
-/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Base */
 body {
   background: #000;
   color: #fff;
@@ -16,7 +14,6 @@ body {
   min-height: 100vh;
 }
 
-/* Matrix Rain */
 #matrix {
   position: fixed;
   top: 0;
@@ -26,7 +23,6 @@ body {
   z-index: -3;
 }
 
-/* Dark Overlay */
 .overlay {
   position: fixed;
   inset: 0;
@@ -35,7 +31,6 @@ body {
   pointer-events: none;
 }
 
-/* Floating Top Nav - pure white text, no background or blur */
 .top-nav {
   position: fixed;
   top: 0;
@@ -87,21 +82,20 @@ body {
   width: 100%;
 }
 
-/* Active page highlight */
 .nav-links a.active {
   color: #ffffff;
   text-shadow: 0 0 24px #ffffff, 0 0 48px #ffffff;
   border-bottom: 2px solid #ffffff;
 }
 
-/* Hero layout */
+/* Hero - text left, batman right */
 .hero {
   position: relative;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10rem 0 6rem; /* Left space for text, right for figure */
+  padding: 0 10rem 0 6rem;
 }
 
 .batman-hero {
@@ -110,7 +104,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: right -8%; /* Far right - adjust -10% / -12% if needed */
+  object-position: right -8%; /* Far right */
   opacity: 0.80;
   pointer-events: none;
   z-index: 1;
@@ -128,16 +122,16 @@ body {
   50% { opacity: 0.85; }
 }
 
-/* Text block on left - smaller, white glow, no cutoff */
+/* Text on left - smaller, white glow */
 .title-left {
   z-index: 5;
   text-align: left;
   max-width: 38%;
-  margin-left: 2rem; /* Adjust this to push left (0rem = flush left, 4rem = inset) */
+  margin-left: 2rem; /* Adjust if needed */
 }
 
 h1 {
-  font-size: clamp(5rem, 10vw, 9rem);
+  font-size: clamp(4.5rem, 9vw, 8rem);
   color: #ffffff;
   text-shadow: 0 0 22px #ffffff, 0 0 45px #ffffff;
   line-height: 0.92;
@@ -147,7 +141,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(2.8rem, 6vw, 6rem); /* Smaller than h1 */
+  font-size: clamp(2.5rem, 5.5vw, 5.5rem); /* Smaller than h1 */
   color: #ffffff;
   text-shadow: 0 0 18px #ffffff, 0 0 36px #ffffff;
   margin: 0 0 1.8rem 0;
@@ -163,7 +157,7 @@ h2 {
   white-space: nowrap;
 }
 
-/* Scattered code snippets */
+/* Scattered code */
 .code-float {
   position: absolute;
   color: #004d33;
@@ -176,11 +170,11 @@ h2 {
   opacity: 0.22;
 }
 
-/* Projects page bubbles */
+/* Bubbles container - below title, left side, no overlap */
 .bubbles-container {
   position: absolute;
-  bottom: 15%;
-  left: 18%;
+  bottom: 15%; /* Below title - adjust higher to 20% if needed */
+  left: 18%; /* Align with left text */
   display: flex;
   flex-wrap: wrap;
   gap: 2.5rem;
@@ -188,6 +182,7 @@ h2 {
   z-index: 5;
 }
 
+/* Bubble - round, glowing, floating, clickable */
 .bubble {
   background: rgba(0,0,0,0.55);
   border-radius: 50%;
@@ -202,6 +197,8 @@ h2 {
   box-shadow: 0 0 30px rgba(0,255,136,0.4);
   transition: all 0.4s ease;
   animation: bubble-float 6s ease-in-out infinite;
+  text-decoration: none;
+  color: #fff;
 }
 
 .bubble:hover {
@@ -210,7 +207,7 @@ h2 {
 }
 
 .bubble-logo {
-  width: 70%;
+  width: 70%; /* Logo perfectly centered inside bubble */
   height: auto;
   filter: drop-shadow(0 0 15px #0f0);
   margin-bottom: 1rem;
@@ -232,7 +229,7 @@ h2 {
   50% { transform: translateY(-12px); }
 }
 
-/* Mobile adjustments */
+/* Mobile */
 @media (max-width: 768px) {
   .top-nav {
     padding: 1.2rem 2rem;
