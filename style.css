@@ -127,7 +127,7 @@ body {
   z-index: 5;
   text-align: left;
   max-width: 35%;
-  margin-left: 0;
+  margin-left: -2rem;
   margin-top: 2rem;
 }
 
