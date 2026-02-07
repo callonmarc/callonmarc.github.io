@@ -152,7 +152,7 @@ h2 {
 }
 
 .tagline {
-  font-size: clamp(.7rem, 2.8vw, 2.2rem);
+  font-size: clamp(.4rem, 1.3vw, 1.6rem);
   color: #eeeeee;
   text-shadow: 0 0 10px #ffffff;
   letter-spacing: 2px;
