@@ -31,13 +31,13 @@ body {
 .top-nav {
   position: fixed;
   top: 1.5rem;
-  left: 2;
-  right: 8.5;
+  left: 0;
+  right: 5;
   z-index: 100;
   display: flex;
   justify-content: center;
   gap: 5rem;
-  padding: 5;
+  padding: 0;
   background: transparent;
   backdrop-filter: none;
   border: none;
