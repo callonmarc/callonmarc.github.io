@@ -91,6 +91,7 @@ body {
   height: 100%;
   object-fit: contain;
   object-position: right 0%; /* Pushed very far right */
+  transform: translateX(20%);
   opacity: 0.80;
   pointer-events: none;
   z-index: 1;
