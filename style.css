@@ -104,7 +104,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: right 50%;
+  object-position: right 0%;
+  transform: translateX(20%);
   opacity: 0.80;
   pointer-events: none;
   z-index: 1;
