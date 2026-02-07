@@ -1,119 +1,230 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marcus | Batcave</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
-</head>
-<body>
-
-  <!-- Matrix rain canvas -->
-  <canvas id="bgCanvas"></canvas>
-
-  <!-- Dark overlay for better text readability over rain -->
-  <div class="overlay"></div>
-
-  <!-- Navigation -->
-  <nav class="navbar">
-    <a href="index.html">HOME</a>
-    <a href="projects.html">PROJECTS</a>
-    <a href="about.html">ABOUT</a>
-    <a href="contact.html">CONTACT</a>
-  </nav>
-
-  <!-- Hero section -->
-  <header class="hero">
-    <img src="assets/batman-holo.jpg" alt="Batman Silhouette" class="batman-hero">
-
-    <div class="title-group">
-      <h1>MARCUS</h1>
-      <h2>PORTFOLIO</h2>
-    </div>
-
-    <p class="subtitle">
-      Cybersecurity • Web Development • Tech
-    </p>
-  </header>
-
-  <!-- Scattered fake code snippets (adjust positions as needed) -->
-  <div class="code-snippet" style="top: 15%; left: 6%; transform: rotate(-4deg);">
-<code>
-function initBatcave() {<br>
-&nbsp;&nbsp;deployShadows();<br>
-&nbsp;&nbsp;activateProtocols();<br>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-</code>
-  </div>
 
-  <div class="code-snippet" style="top: 38%; right: 8%; opacity: 0.65; transform: rotate(3deg);">
-<code>
-class ShadowProtocol {<br>
-&nbsp;&nbsp;constructor() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;this.encryptAll();<br>
-&nbsp;&nbsp;}<br>
+body {
+  background: #000;
+  color: #0f0;
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
-</code>
-  </div>
 
-  <div class="code-snippet" style="bottom: 28%; left: 10%; font-size: 0.95rem; opacity: 0.5;">
-<code>
-&lt;bat-signal status="ACTIVE" /&gt;<br>
-gotham.online = true;
-</code>
-  </div>
+#bgCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+}
 
-  <div class="code-snippet" style="top: 55%; left: 4%; opacity: 0.45;">
-<code>
-// justice protocol v1.0<br>
-if (threatLevel > 9000) alert("Deploy Batman");
-</code>
-  </div>
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.52); /* Darker on mobile for readability */
+  z-index: -2;
+  pointer-events: none;
+}
 
-  <!-- Your existing Matrix rain script (enhanced slightly) -->
-  <script>
-    const canvas = document.getElementById("bgCanvas");
-    const ctx = canvas.getContext("2d");
+/* Navbar – better mobile stacking */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 1.2rem 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(0, 255, 136, 0.35);
+  flex-wrap: wrap; /* Allow wrapping on very small screens */
+}
 
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener("resize", resize);
+.navbar a {
+  position: relative;
+  color: #00ff9f;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px #0f0;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s;
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  border-radius: 4px;
+  background: rgba(0, 255, 136, 0.04);
+}
 
-    const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()".split("");
-    const fontSize = 16;
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops = new Array(columns).fill(1);
+.navbar a:hover {
+  color: #00ffff;
+  text-shadow: 0 0 25px #0ff;
+  border-color: #00ffff;
+  background: rgba(0, 255, 255, 0.1);
+}
 
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+/* Hero – mobile-first adjustments */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1rem 2rem; /* More top padding for nav clearance */
+}
 
-      ctx.fillStyle = "#0f0";
-      ctx.font = fontSize + "px 'Roboto Mono', monospace";
+.batman-hero {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center 15%; /* More upward on mobile to show face */
+  opacity: 0.50;
+  pointer-events: none;
+  z-index: 1;
+  filter:
+    brightness(1.9)
+    contrast(1.35)
+    drop-shadow(0 0 70px #0f0)
+    drop-shadow(0 0 140px #0f0);
+  mix-blend-mode: screen;
+  animation: glowPulse 12s ease-in-out infinite;
+}
 
-      for (let i = 0; i < drops.length; i++) {
-        const text = chars[Math.floor(Math.random() * chars.length)];
-        const x = i * fontSize;
-        const y = drops[i] * fontSize;
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.45; }
+  50%      { opacity: 0.58; }
+}
 
-        ctx.fillText(text, x, y);
+.title-group {
+  z-index: 5;
+  position: relative;
+}
 
-        if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-      }
-    }
+h1 {
+  font-size: clamp(4rem, 18vw, 16rem); /* Much smaller max on mobile */
+  color: #00ffcc;
+  text-shadow:
+    0 0 40px #0ff,
+    0 0 80px #0ff,
+    0 0 140px #0f0;
+  line-height: 0.85;
+  letter-spacing: -6px;
+  margin: 0;
+  mix-blend-mode: screen;
+  opacity: 1;
+}
 
-    setInterval(draw, 35);
+h2 {
+  font-size: clamp(2.5rem, 10vw, 9rem);
+  color: #00ffaa;
+  text-shadow: 0 0 30px #0f0, 0 0 60px #0f0;
+  margin-top: -1.5rem;
+  letter-spacing: 5px;
+  opacity: 1;
+}
 
-    // Simple page fade (optional, from your original)
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("loaded");
-    });
-  </script>
-</body>
-</html>
+.subtitle {
+  font-size: clamp(1.4rem, 5vw, 2.8rem);
+  color: #00ffbb;
+  text-shadow: 0 0 25px #0ff;
+  z-index: 5;
+  margin-top: 2rem;
+  letter-spacing: 3px;
+  line-height: 1.4; /* Better readability */
+}
+
+/* Scattered code – hide some on mobile to reduce clutter */
+.code-snippet {
+  position: absolute;
+  color: #009955;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.95rem;
+  pointer-events: none;
+  white-space: pre;
+  text-shadow: 0 0 10px #0f0;
+  z-index: 3;
+  opacity: 0.55;
+  user-select: none;
+}
+
+/* Hide extra snippets on small screens */
+@media (max-width: 768px) {
+  .code-snippet:nth-child(n+4) { /* Hide 4th and later */
+    display: none;
+  }
+
+  .navbar {
+    gap: 1rem;
+    padding: 1rem 0;
+    flex-direction: row; /* Still horizontal but tighter */
+    justify-content: space-around;
+  }
+
+  .navbar a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 3px;
+  }
+
+  .hero {
+    padding: 5rem 0.8rem 1rem; /* Extra top space */
+  }
+
+  h1 {
+    letter-spacing: -4px;
+  }
+
+  h2 {
+    margin-top: -1rem;
+    letter-spacing: 3px;
+  }
+
+  .subtitle {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+  }
+
+  .batman-hero {
+    object-position: center 20%; /* Shift more up on phones */
+    opacity: 0.55; /* Slightly more visible */
+  }
+}
+
+/* Extra small phones (e.g., iPhone SE) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: clamp(3.5rem, 16vw, 8rem);
+  }
+
+  h2 {
+    font-size: clamp(2rem, 9vw, 5rem);
+  }
+
+  .navbar {
+    gap: 0.8rem;
+    padding: 0.8rem 0;
+  }
+
+  .navbar a {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+/* Fade-in */
+body.loaded {
+  animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 
