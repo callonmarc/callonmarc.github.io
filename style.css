@@ -27,7 +27,7 @@ body {
   pointer-events: none;
 }
 
-/* Floating top nav – clean reference style */
+/* Top nav – floating, very transparent, no heavy black bg */
 .top-nav {
   position: fixed;
   top: 0;
@@ -38,9 +38,9 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1.8rem 5rem;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(14px);
-  border-bottom: none; /* no black bar */
+  background: rgba(0, 0, 0, 0.35); /* Much more transparent */
+  backdrop-filter: blur(16px); /* Stronger blur = floating feel */
+  border-bottom: none; /* No bar at all */
 }
 
 .nav-links {
@@ -82,12 +82,14 @@ body {
 
 .search-q {
   color: #00ff88;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   text-shadow: 0 0 10px #0f0;
   cursor: default;
+  opacity: 0.8; /* Make Q less prominent if you want */
+  /* To completely remove Q, just delete <div class="search-q">Q</div> from HTML */
 }
 
-/* Main layout: text left – batman right */
+/* Hero layout: text left – batman right */
 .hero {
   position: relative;
   height: 100vh;
@@ -103,60 +105,60 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: right center;
-  opacity: 0.72;
+  object-position: right 10%; /* Pushed more to the right */
+  opacity: 0.74;
   pointer-events: none;
   z-index: 1;
   filter:
-    brightness(2.25)
+    brightness(2.3)
     contrast(1.5)
-    drop-shadow(0 0 140px #0f0)
-    drop-shadow(0 0 280px #0f0);
+    drop-shadow(0 0 150px #0f0)
+    drop-shadow(0 0 300px #0f0);
   mix-blend-mode: screen;
-  animation: pulse 16s ease-in-out infinite;
+  animation: pulse 18s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.68; }
-  50% { opacity: 0.78; }
+  0%, 100% { opacity: 0.70; }
+  50% { opacity: 0.80; }
 }
 
-/* Text on left – glowing white, smaller, no background box */
+/* Text on left – smaller, white glow, clean */
 .title-left {
   z-index: 5;
   text-align: left;
-  max-width: 45%;
+  max-width: 40%;
 }
 
 h1 {
-  font-size: clamp(6rem, 11vw, 10rem);
+  font-size: clamp(5.5rem, 10vw, 9.5rem); /* Smaller max size */
   color: #ffffff;
   text-shadow:
-    0 0 25px #ffffff,
-    0 0 50px #ffffff,
-    0 0 90px #00ff88;
+    0 0 20px #ffffff,
+    0 0 40px #ffffff,
+    0 0 70px #00ff88;
   line-height: 0.9;
-  letter-spacing: -5px;
-  margin: 0 0 0.8rem;
+  letter-spacing: -4px;
+  margin: 0 0 0.6rem;
   mix-blend-mode: screen;
 }
 
 h2 {
-  font-size: clamp(3.5rem, 7vw, 7rem);
+  font-size: clamp(3.2rem, 6.5vw, 6.5rem); /* Smaller */
   color: #ffffff;
   text-shadow:
-    0 0 20px #ffffff,
-    0 0 40px #00ff88;
-  margin: 0 0 2rem;
+    0 0 15px #ffffff,
+    0 0 30px #00ff88;
+  margin: 0 0 1.8rem;
   letter-spacing: 4px;
 }
 
 .tagline {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.4rem, 3vw, 2rem);
   color: #dddddd;
-  text-shadow: 0 0 12px #00ff88;
+  text-shadow: 0 0 10px #00ff88;
   letter-spacing: 2px;
-  opacity: 0.92;
+  opacity: 0.9;
 }
 
 /* Minimal scattered code */
@@ -169,10 +171,10 @@ h2 {
   white-space: pre;
   text-shadow: 0 0 5px #0f0;
   z-index: 2;
-  opacity: 0.26;
+  opacity: 0.24;
 }
 
-/* Mobile fallback */
+/* Mobile */
 @media (max-width: 768px) {
   .top-nav {
     padding: 1.2rem 2rem;
@@ -196,7 +198,7 @@ h2 {
     max-width: 90%;
   }
 
-  h1 { font-size: clamp(5rem, 15vw, 9rem); }
-  h2 { font-size: clamp(3rem, 10vw, 6rem); }
+  h1 { font-size: clamp(4.5rem, 14vw, 9rem); }
+  h2 { font-size: clamp(2.8rem, 9vw, 6rem); }
   .tagline { font-size: 1.5rem; }
 }
