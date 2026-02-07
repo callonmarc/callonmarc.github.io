@@ -385,7 +385,7 @@ h2 {
     transform: translateX(0) translateY(0) rotate(0deg) scale(1);
   }
   25% {
-    transform: translateX(12%) translateY(-9%) rotate(1.5deg) scale(1.02);
+    transform: translateX(12%) translateY(-7%) rotate(1.5deg) scale(1.02);
   }
   50% {
     transform: translateX(0) translateY(1%) rotate(0deg) scale(1.01);
