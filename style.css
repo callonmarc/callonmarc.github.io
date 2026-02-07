@@ -138,7 +138,7 @@ body {
 }
 
 h1 {
-  font-size: clamp(3rem, 8vw, 6rem); /* Smaller MARCUS */
+  font-size: clamp(2.4rem, 6.7vw, 5.4rem); /* Smaller MARCUS */
   color: #ffffff;
   text-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff;
   line-height: 0.95;
@@ -148,7 +148,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(1.7rem, 3.6vw, 3.3rem); /* Much smaller PORTFOLIO */
+  font-size: clamp(1.3rem, 3.2vw, 2.8rem); /* Much smaller PORTFOLIO */
   color: #ffffff;
   text-shadow: 0 0 16px #ffffff, 0 0 32px #ffffff;
   margin: 0 0 1.5rem 0;
