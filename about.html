@@ -1,9 +1,10 @@
+<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | Marcus Batcave</title>
+  <title>About | Marcus</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -16,23 +17,27 @@
     <div class="nav-links">
       <a href="index.html">HOME</a>
       <a href="projects.html">WORK</a>
-      <a href="about.html">ABOUT</a>
+      <a href="about.html" class="active">ABOUT</a>
       <a href="contact.html">CONTACT</a>
     </div>
   </nav>
 
-  <main class="hero">
+  <main class="hero about-hero">  /* Unique class for about page style */
     <img src="assets/superman-holo.jpg" alt="Batman" class="batman-hero">
 
     <div class="title-left">
-      <h1>ABOUT</h1>
-      <h2>MARCUS</h2>
+      <h1>CALLONMARC</h1>
+      <h2>ABOUT</h2>
       <p class="tagline">Learning cybersecurity & systems</p>
     </div>
   </main>
 
-  <section class="content-page">
-    <p>I’m Marcus, learning cybersecurity and web development through hands-on labs and real projects.</p>
+  <section class="bio-section">
+    <img src="assets/aboutme.jpg" alt="Marcus" class="bio-image">
+    <p>
+      I’m Marcus, learning cybersecurity and web development through
+      hands-on labs and real projects.
+    </p>
   </section>
 
   <div class="code-float" style="top:12%; left:6%; opacity:0.25;">initShadow();</div>
@@ -51,7 +56,7 @@
     });
 
     const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()'.split('');
-    const fontSize = 13;
+    const fontSize = 13; // smaller = less dense
     const columns = canvas.width / fontSize;
     const drops = Array(Math.floor(columns)).fill(1);
 
@@ -74,7 +79,7 @@
       }
     }
 
-    setInterval(draw, 60);
+    setInterval(draw, 60); // slower = cleaner
   </script>
 </body>
 </html>
