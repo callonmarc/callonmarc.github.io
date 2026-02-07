@@ -1,201 +1,144 @@
-/* =========================
-   GLOBAL RESET
-========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================
-   BODY BASE
-========================= */
 body {
-  background: #000;
-  color: #d9ffd9;
-  font-family: 'Segoe UI', sans-serif;
-  overflow-x: hidden;
+  font-family: 'Courier New', monospace;
+  background: black;
+  color: #d0ffd0;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* =========================
-   GREEN CODE BACKGROUND
-========================= */
+/* Matrix Code Background */
 .code-bg {
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: -2;
   pointer-events: none;
-  overflow: hidden;
+  background: black;
 }
 
-.code-bg::after {
-  content:
-"ssh root@batcave\n"
-"decrypting packets...\n"
-"access granted\n"
-"loading modules...\n"
-"01001110 01100101 01110100\n"
-"packet stream open\n"
-"render hologram\n"
-"system online\n"
-"trace disabled\n"
-"sudo batman\n"
-"node exploit initialized\n"
-"kernel override success\n";
-
+.code-bg::before {
+  content: "ssh root@batcave access_granted decrypting_assets loading_modules initializing darknet protocols █";
   position: absolute;
   inset: 0;
-  padding: 30px;
-
-  font-family: monospace;
   font-size: 14px;
-  line-height: 1.4;
-
-  color: rgba(0, 255, 100, 0.18);
+  line-height: 1.2;
+  color: rgba(0, 255, 0, 0.15);
   white-space: pre-wrap;
+  animation: scrollCode 18s linear infinite;
 }
 
-/* =========================
-   CANVAS BACKGROUND
-========================= */
-#bgCanvas {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
+@keyframes scrollCode {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(-100%);
+  }
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* Navbar */
 .navbar {
-  position: relative;
-  z-index: 5;
-
   display: flex;
   justify-content: center;
-  gap: 28px;
-
+  gap: 30px;
   padding: 18px 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 5;
 }
 
 .navbar a {
-  color: #7cff7c;
+  color: #00ff66;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: bold;
   letter-spacing: 1px;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .navbar a:hover {
-  color: #b6ffb6;
-  text-shadow: 0 0 6px rgba(0,255,0,0.7);
+  text-shadow: 0 0 8px #00ff66;
 }
 
-/* =========================
-   HERO SECTION
-========================= */
+/* Hero */
 .hero {
-  position: relative;
-  z-index: 5;
-
+  padding: 120px 20px 60px;
   text-align: center;
-  padding: 60px 20px 30px;
+  position: relative;
+  z-index: 2;
 }
 
 .hero h1 {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
+  font-size: 3rem;
+  color: #00ff66;
+  text-shadow: 0 0 12px rgba(0,255,102,0.5);
 }
 
 .hero p {
-  font-size: 1rem;
-  max-width: 620px;
-  margin: 0 auto;
-  line-height: 1.4;
-  opacity: 0.85;
+  margin-top: 12px;
+  font-size: 1.1rem;
+  opacity: 0.8;
 }
 
-/* =========================
-   HOLOGRAM IMAGE
-========================= */
+/* Hologram Image */
 .holo {
-  position: relative;
-  z-index: 4;
-
   display: block;
-  margin: 40px auto 20px;
-
-  width: 240px;
-  max-width: 80%;
-
+  margin: 40px auto 0;
+  width: 260px;
   filter:
-    drop-shadow(0 0 12px rgba(0,255,0,0.5))
+    drop-shadow(0 0 20px rgba(0,255,102,0.6))
     contrast(1.1);
-
-  animation: holoFloat 4s ease-in-out infinite;
+  opacity: 0.9;
 }
 
-@keyframes holoFloat {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0); }
-}
-
-/* =========================
-   SECTIONS
-========================= */
-section {
-  position: relative;
-  z-index: 5;
-  padding: 40px 20px;
+/* Cards */
+.projects-preview {
+  padding: 60px 20px;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
-section h2 {
-  margin-bottom: 20px;
-  font-size: 1.6rem;
-}
-
-/* =========================
-   PROJECT CARDS
-========================= */
 .project-cards {
   display: flex;
+  gap: 24px;
   justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
+  margin-top: 30px;
 }
 
 .card {
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(0,255,0,0.2);
-  padding: 18px;
   width: 260px;
-
-  backdrop-filter: blur(4px);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 18px rgba(0,255,0,0.4);
+  padding: 20px;
+  border: 1px solid rgba(0,255,102,0.4);
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
 }
 
 .card h3 {
-  margin-bottom: 8px;
-  font-size: 1.1rem;
-}
-
-.card p {
-  font-size: 0.9rem;
-  opacity: 0.85;
-  margin-bottom: 12px;
+  color: #00ff66;
+  margin-bottom: 10px;
 }
 
 .card a {
-  color: #7cff7c;
+  color: #00ff66;
   text-decoration: none;
   font-weight: bold;
+}
+
+.card a:hover {
+  text-shadow: 0 0 8px #00ff66;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
 }
 
