@@ -30,12 +30,16 @@
       <p class="tagline">Hands-on builds and real learning</p>
     </div>
 
-    <!-- Bubbles for projects, positioned in hero to avoid scroll -->
+    <!-- Logo bubble – clickable, positioned below title, no interference -->
+    <div class="logo-bubble-container">
+      <a href="batcave-portfolio.html" class="logo-bubble"> <!-- Change href to your project page -->
+        <img src="assets/logo.PNG" alt="M Logo" class="bubble-logo">
+        <p>Batcave Portfolio</p>
+      </a>
+    </div>
+
+    <!-- Other project bubbles below or beside if needed -->
     <div class="bubbles-container">
-      <div class="bubble">
-        <h3>Batcave Portfolio</h3>
-        <p>Custom themed website.</p>
-      </div>
       <div class="bubble">
         <h3>TryHackMe Labs</h3>
         <p>Cybersecurity practice.</p>
@@ -63,7 +67,7 @@
     });
 
     const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()'.split('');
-    const fontSize = 13; // smaller = less dense
+    const fontSize = 13;
     const columns = canvas.width / fontSize;
     const drops = Array(Math.floor(columns)).fill(1);
 
@@ -86,7 +90,7 @@
       }
     }
 
-    setInterval(draw, 60); // slower = cleaner
+    setInterval(draw, 60);
   </script>
 </body>
 </html>
