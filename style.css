@@ -115,7 +115,7 @@ body {
     drop-shadow(0 0 160px #0f0)
     drop-shadow(0 0 320px #0f0);
   mix-blend-mode: none;
-  animation: float-hero 24s ease-in-out infinite;
+  animation: float-hero 26s ease-in-out infinite;
 }
 
 @keyframes pulse {
@@ -384,13 +384,13 @@ h2 {
     transform: translateX(0) translateY(0) rotate(0deg) scale(1);
   }
   25% {
-    transform: translateX(12%) translateY(-9%) rotate(1.5deg) scale(1.02);
+    transform: translateX(12%) translateY(-10%) rotate(1.5deg) scale(1.02);
   }
   50% {
     transform: translateX(0) translateY(1%) rotate(0deg) scale(1.01);
   }
   75% {
-    transform: translateX(-10%) translateY(-7%) rotate(-1.5deg) scale(1.03);
+    transform: translateX(-10%) translateY(-8%) rotate(-1.5deg) scale(1.03);
   }
   100% {
     transform: translateX(0) translateY(0) rotate(0deg) scale(1);
