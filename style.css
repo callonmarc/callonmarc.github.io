@@ -113,7 +113,7 @@ body {
   z-index: 5;
   text-align: left;
   max-width: 32%;
-  margin-left: 0rem; /* Pushed left more */
+  margin-left: -10rem; /* Pushed left more */
 }
 
 h1 {
