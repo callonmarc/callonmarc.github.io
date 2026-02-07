@@ -115,7 +115,7 @@ body {
     drop-shadow(0 0 160px #0f0)
     drop-shadow(0 0 320px #0f0);
   mix-blend-mode: none;
-  animation: float-hero 18s ease-in-out infinite;
+  animation: float-hero 24s ease-in-out infinite;
 }
 
 @keyframes pulse {
