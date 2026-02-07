@@ -125,7 +125,7 @@ body {
   z-index: 5;
   text-align: left;
   max-width: 38%;
-  margin-left: .6rem;
+  margin-left: .1rem;
 }
 
 h1 {
@@ -139,7 +139,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(2rem, 4.5vw, 4rem); /* Much smaller than h1 */
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem); /* Much smaller than h1 */
   color: #ffffff;
   text-shadow: 0 0 18px #ffffff, 0 0 36px #ffffff;
   margin: 0 0 1.5rem 0;
@@ -147,7 +147,7 @@ h2 {
 }
 
 .tagline {
-  font-size: clamp(1.2rem, 2.8vw, 1.9rem);
+  font-size: clamp(.7rem, 2vw, 1.4rem);
   color: #eeeeee;
   text-shadow: 0 0 10px #ffffff;
   letter-spacing: 2px;
