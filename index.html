@@ -12,49 +12,46 @@
   <!-- Matrix rain canvas -->
   <canvas id="bgCanvas"></canvas>
 
-  <!-- Dark overlay -->
+  <!-- Dark overlay for depth/readability -->
   <div class="overlay"></div>
 
-  <!-- Navigation (clean, reference-style) -->
-  <nav class="navbar">
-    <div class="nav-links">
-      <a href="index.html">HOME</a>
-      <a href="projects.html">PROJECTS</a>
-      <a href="about.html">ABOUT</a>
-      <a href="contact.html">CONTACT</a>
-    </div>
+  <!-- Floating vertical sidebar nav (left side, small, glowing) -->
+  <nav class="sidebar-nav">
+    <a href="index.html">HOME</a>
+    <a href="projects.html">PROJECTS</a>
+    <a href="about.html">ABOUT</a>
+    <a href="contact.html">CONTACT</a>
     <div class="search-icon">Q</div>
   </nav>
 
-  <!-- Hero / main content -->
+  <!-- Main hero/content area -->
   <main class="hero">
-    <img src="assets/batman-holo.PNG" alt="Batman Silhouette" class="batman-hero">
+    <img src="assets/batman-holo.jpg" alt="Batman Silhouette" class="batman-hero">
 
-    <div class="title-group">
+    <!-- Text positioned to the right/bottom-right for side-like feel -->
+    <div class="title-content">
       <h1>MARCUS</h1>
       <h2>PORTFOLIO</h2>
       <p class="subtitle">Cybersecurity • Web Development • Tech</p>
     </div>
   </main>
 
-  <!-- Scattered code snippets (low-key, edges only) -->
-  <div class="code-snippet" style="top: 18%; left: 5%; opacity: 0.45;">
+  <!-- Scattered subtle code snippets (farther from center) -->
+  <div class="code-snippet" style="top: 15%; left: 22%; opacity: 0.4;">
     <pre><code>function initBatcave() {
   deployShadows();
-  activateProtocols();
 }</code></pre>
   </div>
 
-  <div class="code-snippet" style="top: 42%; right: 7%; opacity: 0.4; transform: rotate(2deg);">
+  <div class="code-snippet" style="top: 35%; right: 10%; opacity: 0.35; transform: rotate(-3deg);">
     <pre><code>class ShadowProtocol {
-  encrypt(data) { /* ... */ }
-  justice() { return true; }
+  encrypt() { /* ... */ }
 }</code></pre>
   </div>
 
-  <div class="code-snippet" style="bottom: 25%; left: 8%; opacity: 0.38;">
-    <pre><code>// bat-signal status="ACTIVE"
-// gotham.online = true;
+  <div class="code-snippet" style="bottom: 20%; left: 18%; opacity: 0.3;">
+    <pre><code>// bat-signal ACTIVE
+gotham.online = true;
 </code></pre>
   </div>
 
@@ -94,8 +91,7 @@
       }
     }
 
-    setInterval(draw, 40); // Slightly slower for smoother feel
+    setInterval(draw, 40);
   </script>
 </body>
 </html>
-
