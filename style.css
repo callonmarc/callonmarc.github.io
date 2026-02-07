@@ -124,9 +124,10 @@ body {
 .title-left {
   z-index: 5;
   text-align: left;
-  max-width: 38%;
-  margin-left: .1rem;
-}
+  max-width: 32%;
+  margin-left: -12rem;  
+  margin-top: -8rem;     
+
 
 h1 {
   font-size: clamp(3rem, 5vw, 4rem);
