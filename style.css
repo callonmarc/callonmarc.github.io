@@ -30,7 +30,7 @@ body {
 .top-nav {
   position: fixed;
   top: 0;
-  left: 4rem;              /* ← change this number to move right/left */
+  left: 3rem;              /* ← change this number to move right/left */
   right: auto;             /* stops it from stretching full-width */
   z-index: 100;
   display: flex;
