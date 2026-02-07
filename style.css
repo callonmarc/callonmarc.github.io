@@ -90,7 +90,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: right -10%; /* Pushed very far right */
+  object-position: right -15%; /* Pushed very far right */
   opacity: 0.80;
   pointer-events: none;
   z-index: 1;
