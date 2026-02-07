@@ -5,73 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Marcus | Batcave</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- Matrix rain canvas -->
   <canvas id="bgCanvas"></canvas>
 
-  <!-- Dark overlay for better text readability over rain -->
+  <!-- Dark overlay -->
   <div class="overlay"></div>
 
-  <!-- Navigation -->
+  <!-- Navigation (clean, reference-style) -->
   <nav class="navbar">
-    <a href="index.html">HOME</a>
-    <a href="projects.html">PROJECTS</a>
-    <a href="about.html">ABOUT</a>
-    <a href="contact.html">CONTACT</a>
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="projects.html">PROJECTS</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+    <div class="search-icon">Q</div>
   </nav>
 
-  <!-- Hero section -->
-  <header class="hero">
+  <!-- Hero / main content -->
+  <main class="hero">
     <img src="assets/batman-holo.PNG" alt="Batman Silhouette" class="batman-hero">
 
     <div class="title-group">
-      <h1>christian</h1>
-      <h2></h2>
+      <h1>MARCUS</h1>
+      <h2>PORTFOLIO</h2>
+      <p class="subtitle">Cybersecurity • Web Development • Tech</p>
     </div>
+  </main>
 
-    <p class="subtitle">
-      Cybersecurity • Web Development • Tech
-    </p>
-  </header>
-
-  <!-- Scattered fake code snippets (adjust positions as needed) -->
-  <div class="code-snippet" style="top: 15%; left: 6%; transform: rotate(-4deg);">
-<code>
-function initBatcave() {<br>
-&nbsp;&nbsp;deployShadows();<br>
-&nbsp;&nbsp;activateProtocols();<br>
-}
-</code>
+  <!-- Scattered code snippets (low-key, edges only) -->
+  <div class="code-snippet" style="top: 18%; left: 5%; opacity: 0.45;">
+    <pre><code>function initBatcave() {
+  deployShadows();
+  activateProtocols();
+}</code></pre>
   </div>
 
-  <div class="code-snippet" style="top: 38%; right: 8%; opacity: 0.65; transform: rotate(3deg);">
-<code>
-class ShadowProtocol {<br>
-&nbsp;&nbsp;constructor() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;this.encryptAll();<br>
-&nbsp;&nbsp;}<br>
-}
-</code>
+  <div class="code-snippet" style="top: 42%; right: 7%; opacity: 0.4; transform: rotate(2deg);">
+    <pre><code>class ShadowProtocol {
+  encrypt(data) { /* ... */ }
+  justice() { return true; }
+}</code></pre>
   </div>
 
-  <div class="code-snippet" style="bottom: 28%; left: 10%; font-size: 0.95rem; opacity: 0.5;">
-<code>
-&lt;bat-signal status="ACTIVE" /&gt;<br>
-gotham.online = true;
-</code>
+  <div class="code-snippet" style="bottom: 25%; left: 8%; opacity: 0.38;">
+    <pre><code>// bat-signal status="ACTIVE"
+// gotham.online = true;
+</code></pre>
   </div>
 
-  <div class="code-snippet" style="top: 55%; left: 4%; opacity: 0.45;">
-<code>
-// justice protocol v1.0<br>
-if (threatLevel > 9000) alert("Deploy Batman");
-</code>
-  </div>
-
-  <!-- Your existing Matrix rain script (enhanced slightly) -->
+  <!-- Matrix rain script -->
   <script>
     const canvas = document.getElementById("bgCanvas");
     const ctx = canvas.getContext("2d");
@@ -107,12 +94,7 @@ if (threatLevel > 9000) alert("Deploy Batman");
       }
     }
 
-    setInterval(draw, 35);
-
-    // Simple page fade (optional, from your original)
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("loaded");
-    });
+    setInterval(draw, 40); // Slightly slower for smoother feel
   </script>
 </body>
 </html>
