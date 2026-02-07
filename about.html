@@ -1,18 +1,21 @@
-<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | Marcus</title>
+  <title>About | Marcus Batcave</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+  <!-- Matrix rain -->
   <canvas id="matrix"></canvas>
+
+  <!-- Dark overlay -->
   <div class="overlay"></div>
 
+  <!-- Top nav – same as homepage, highlight ABOUT -->
   <nav class="top-nav">
     <div class="nav-links">
       <a href="index.html">HOME</a>
@@ -22,24 +25,23 @@
     </div>
   </nav>
 
-  <main class="hero about-hero">  /* Unique class for about page style */
+  <!-- Hero layout – figure on right, bio centered below -->
+  <main class="hero about-hero">
     <img src="assets/superman-holo.jpg" alt="Batman" class="batman-hero">
 
-    <div class="title-left">
-      <h1>CALLONMARC</h1>
-      <h2>ABOUT</h2>
-      <p class="tagline">Learning cybersecurity & systems</p>
-    </div>
+    <!-- Bio section – centered, unique to about page -->
+    <section class="bio-section">
+      <img src="assets/aboutme.jpg" alt="Marcus" class="bio-image">
+      <h1>About Marcus</h1>
+      <p class="bio-text">
+        I’m Marcus, learning cybersecurity and web development through
+        hands-on labs and real projects. Passionate about building systems,
+        breaking things, and understanding how everything connects.
+      </p>
+    </section>
   </main>
 
-  <section class="bio-section">
-    <img src="assets/aboutme.jpg" alt="Marcus" class="bio-image">
-    <p>
-      I’m Marcus, learning cybersecurity and web development through
-      hands-on labs and real projects.
-    </p>
-  </section>
-
+  <!-- Subtle scattered code -->
   <div class="code-float" style="top:12%; left:6%; opacity:0.25;">initShadow();</div>
   <div class="code-float" style="top:55%; right:8%; opacity:0.22;">encryptAll();</div>
 
@@ -56,7 +58,7 @@
     });
 
     const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()'.split('');
-    const fontSize = 13; // smaller = less dense
+    const fontSize = 13;
     const columns = canvas.width / fontSize;
     const drops = Array(Math.floor(columns)).fill(1);
 
@@ -79,7 +81,7 @@
       }
     }
 
-    setInterval(draw, 60); // slower = cleaner
+    setInterval(draw, 60);
   </script>
 </body>
 </html>
