@@ -21,49 +21,21 @@ body {
   position: fixed;
   inset: 0;
   z-index: -2;
-  overflow: hidden;
   pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,255,0,0.15) 0px,
+      rgba(0,255,0,0.15) 2px,
+      transparent 2px,
+      transparent 18px
+    );
+  animation: codeScroll 20s linear infinite;
 }
 
-.code-bg::before {
-  content:
-"ssh root@batcave decrypting assets...\A\
-010101011001001010\A\
-accessing encrypted node\A\
-loading memory blocks\A\
-injecting payload\A\
-system online\A\
-root access granted\A\
-010010101001010101\A\
-ssh root@batcave decrypting assets...\A\
-010101011001001010\A\
-accessing encrypted node\A\
-loading memory blocks\A\
-injecting payload\A\
-system online\A\
-root access granted\A\
-010010101001010101";
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 200vw;        /* fills side-to-side */
-  height: 300vh;       /* fills vertically */
-  white-space: pre;
-
-  font-family: monospace;
-  font-size: 13px;
-  line-height: 1.6;
-
-  color: rgba(0, 255, 0, 0.18);
-
-  animation: scrollCode 45s linear infinite;
-}
-
-@keyframes scrollCode {
-  from { transform: translateY(0); }
-  to { transform: translateY(-50%); }
+@keyframes codeScroll {
+  from { background-position-y: 0; }
+  to   { background-position-y: 1000px; }
 }
 
 /* =========================
@@ -83,8 +55,8 @@ root access granted\A\
   z-index: 10;
   display: flex;
   justify-content: center;
-  gap: 22px;
-  padding: 12px 0;
+  gap: 20px;
+  padding: 10px 0;
   background: rgba(0,0,0,0.65);
   backdrop-filter: blur(6px);
 }
@@ -94,13 +66,6 @@ root access granted\A\
   text-decoration: none;
   font-weight: 600;
   padding: 6px 12px;
-  transition: 0.25s;
-}
-
-.navbar a:hover {
-  background: rgba(0,255,136,0.15);
-  box-shadow: 0 0 10px #00ff88;
-  border-radius: 6px;
 }
 
 /* =========================
@@ -110,20 +75,21 @@ root access granted\A\
   position: relative;
   z-index: 5;
   text-align: center;
-  padding: 120px 20px 60px;
+  padding: 140px 20px 40px;
 }
 
 .hero h1 {
   font-size: 2.6rem;
   color: #00ff88;
-  text-shadow: 0 0 10px rgba(0,255,136,0.35);
-  margin-bottom: 8px;
+  text-shadow: 0 0 8px rgba(0,255,136,0.35);
+  margin-bottom: 6px;
 }
 
 .hero p {
-  max-width: 600px;
+  max-width: 560px;
   margin: 0 auto;
   color: #aaa;
+  font-size: 0.95rem;
 }
 
 /* =========================
@@ -131,19 +97,19 @@ root access granted\A\
    ========================= */
 .holo {
   position: absolute;
-  top: 120px;
+  top: 70px;               /* ABOVE TEXT */
   left: 50%;
-  width: 180px;              
+  width: 160px;
   transform: translateX(-50%);
   z-index: 4;
 
-  filter: drop-shadow(0 0 16px rgba(0,255,0,0.45));
+  filter: drop-shadow(0 0 14px rgba(0,255,0,0.45));
   animation: float 6s ease-in-out infinite;
 }
 
 @keyframes float {
   0%   { transform: translate(-50%, 0); }
-  50%  { transform: translate(-50%, -10px); }
+  50%  { transform: translate(-50%, -8px); }
   100% { transform: translate(-50%, 0); }
 }
 
@@ -153,44 +119,24 @@ root access granted\A\
 section {
   position: relative;
   z-index: 5;
-  padding: 50px 20px;
+  padding: 40px 20px;
   text-align: center;
-}
-
-/* PROJECT CARDS */
-.project-cards {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.card {
-  background: rgba(0,0,0,0.65);
-  border: 1px solid rgba(0,255,136,0.4);
-  padding: 18px;
-  width: 260px;
-  border-radius: 10px;
-  backdrop-filter: blur(8px);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 18px rgba(0,255,136,0.4);
 }
 
 /* =========================
    MOBILE
    ========================= */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.1rem;
+  .hero {
+    padding-top: 120px;
   }
 
   .holo {
-    width: 140px;
-    top: 100px;
+    width: 130px;
+    top: 60px;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
   }
 }
-
