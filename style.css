@@ -28,8 +28,8 @@ canvas {
 .navbar {
   display: flex;
   justify-content: center;
-  gap: 14px;
-  padding: 8px;
+  gap: 20px;
+  padding: 25px;
   background: rgba(0,0,0,0.65);
   border-bottom: 1px solid rgba(0,255,100,0.25);
 }
@@ -49,7 +49,7 @@ canvas {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 140px 20px 80px;
+  padding: 45px 20px 45px;
 }
 
 .hero h1 {
