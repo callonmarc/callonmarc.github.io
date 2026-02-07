@@ -12,23 +12,25 @@
   <!-- Matrix rain canvas -->
   <canvas id="bgCanvas"></canvas>
 
-  <!-- Dark overlay for depth/readability -->
+  <!-- Dark overlay -->
   <div class="overlay"></div>
 
-  <!-- Floating vertical sidebar nav (left side, small, glowing) -->
-  <nav class="sidebar-nav">
-    <a href="index.html">HOME</a>
-    <a href="projects.html">PROJECTS</a>
-    <a href="about.html">ABOUT</a>
-    <a href="contact.html">CONTACT</a>
+  <!-- Top horizontal nav bar (clean, simple, reference-style) -->
+  <nav class="top-nav">
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="projects.html">PROJECTS</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
     <div class="search-icon">Q</div>
   </nav>
 
-  <!-- Main hero/content area -->
+  <!-- Main hero area with Batman on right, text on left -->
   <main class="hero">
-    <img src="assets/batman-holo.PNG" alt="Batman Silhouette" class="batman-hero">
+    <img src="assets/batman-holo.jpg" alt="Batman Silhouette" class="batman-hero">
 
-    <!-- Text positioned to the right/bottom-right for side-like feel -->
+    <!-- Text on left side, aligned left -->
     <div class="title-content">
       <h1>MARCUS</h1>
       <h2>PORTFOLIO</h2>
@@ -36,22 +38,17 @@
     </div>
   </main>
 
-  <!-- Scattered subtle code snippets (farther from center) -->
-  <div class="code-snippet" style="top: 15%; left: 22%; opacity: 0.4;">
-    <pre><code>function initBatcave() {
-  deployShadows();
+  <!-- Scattered subtle code (minimal, edges) -->
+  <div class="code-snippet" style="top: 12%; left: 5%; opacity: 0.35;">
+    <pre><code>function init() {
+  deploy();
 }</code></pre>
   </div>
 
-  <div class="code-snippet" style="top: 35%; right: 10%; opacity: 0.35; transform: rotate(-3deg);">
-    <pre><code>class ShadowProtocol {
-  encrypt() { /* ... */ }
-}</code></pre>
-  </div>
-
-  <div class="code-snippet" style="bottom: 20%; left: 18%; opacity: 0.3;">
-    <pre><code>// bat-signal ACTIVE
-gotham.online = true;
+  <div class="code-snippet" style="top: 45%; right: 6%; opacity: 0.3; transform: rotate(-2deg);">
+    <pre><code>shadowProtocol() {
+  encrypt();
+}
 </code></pre>
   </div>
 
@@ -68,12 +65,12 @@ gotham.online = true;
     window.addEventListener("resize", resize);
 
     const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()".split("");
-    const fontSize = 16;
+    const fontSize = 14; // Slightly smaller for less density
     const columns = Math.floor(canvas.width / fontSize);
     const drops = new Array(columns).fill(1);
 
     function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillStyle = "rgba(0, 0, 0, 0.06)"; // Slower fade for cleaner look
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = "#0f0";
@@ -91,7 +88,7 @@ gotham.online = true;
       }
     }
 
-    setInterval(draw, 40);
+    setInterval(draw, 50); // Slower for less visual noise
   </script>
 </body>
 </html>
