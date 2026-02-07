@@ -1,104 +1,94 @@
+<!-- projects.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Projects | Marcus</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Marcus Batcave</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="code-bg"></div>
-<canvas id="bgCanvas"></canvas>
-<nav class="navbar">
-  <a href="index.html">Home</a>
-  <a href="projects.html">Projects</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-</nav>
 
-<header class="hero">
-  <h1>Projects</h1>
+  <canvas id="matrix"></canvas>
+  <div class="overlay"></div>
 
-  <div class="hero-visual">
-    <img src="assets/batman-project.jpg" class="holo">
-  </div>
+  <nav class="top-nav">
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="projects.html">WORK</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+  </nav>
 
-  <p class="hero-sub">
-    Hands-on builds and real learning
-  </p>
-</header>
+  <main class="hero">
+    <img src="assets/superman-holo.jpg" alt="Batman" class="batman-hero">
 
-<section class="project-cards">
-  <div class="card">
-    <h3>Batcave Portfolio</h3>
-    <p>Custom themed website.</p>
-  </div>
-  <div class="card">
-    <h3>TryHackMe Labs</h3>
-    <p>Cybersecurity practice.</p>
-  </div>
-  <div class="card">
-    <h3>Linux Home Lab</h3>
-    <p>Networking & servers.</p>
-  </div>
-</section>
+    <div class="title-left">
+      <h1>PROJECTS</h1>
+      <h2>MARCUS</h2>
+      <p class="tagline">Hands-on builds and real learning</p>
+    </div>
+  </main>
 
-<!-- SAME SCRIPT AS INDEX -->
-<script>
-const canvas = document.getElementById("bgCanvas");
-const ctx = canvas.getContext("2d");
+  <section class="content-page">
+    <div class="project-cards">
+      <div class="card">
+        <h3>Batcave Portfolio</h3>
+        <p>Custom themed website.</p>
+      </div>
+      <div class="card">
+        <h3>TryHackMe Labs</h3>
+        <p>Cybersecurity practice.</p>
+      </div>
+      <div class="card">
+        <h3>Linux Home Lab</h3>
+        <p>Networking & servers.</p>
+      </div>
+    </div>
+  </section>
 
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener("resize", resize);
+  <div class="code-float" style="top:12%; left:6%; opacity:0.25;">initShadow();</div>
+  <div class="code-float" style="top:55%; right:8%; opacity:0.22;">encryptAll();</div>
 
-const particles = Array.from({ length: 55 }, () => ({
-  x: Math.random() * canvas.width,
-  y: Math.random() * canvas.height,
-  vx: (Math.random() - 0.5) * 0.25,
-  vy: (Math.random() - 0.5) * 0.25
-}));
+  <script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
 
-function animate() {
-  ctx.fillStyle = "#000";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
 
-  particles.forEach(p => {
-    p.x += p.vx;
-    p.y += p.vy;
+    window.addEventListener('resize', () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    });
 
-    if (p.x < 0) p.x = canvas.width;
-    if (p.y < 0) p.y = canvas.height;
-    if (p.x > canvas.width) p.x = 0;
-    if (p.y > canvas.height) p.y = 0;
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*()'.split('');
+    const fontSize = 13;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
 
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,1.3,0,Math.PI*2);
-    ctx.fillStyle = "#00ff66";
-    ctx.fill();
-  });
+    function draw() {
+      ctx.fillStyle = 'rgba(0,0,0,0.08)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  requestAnimationFrame(animate);
-}
-animate();
+      ctx.fillStyle = '#0f0';
+      ctx.font = fontSize + 'px monospace';
 
-window.addEventListener("DOMContentLoaded", () => {
-  document.body.classList.add("fade-in");
-});
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
 
-document.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", e => {
-    const href = link.getAttribute("href");
-    if (!href || href.startsWith("http")) return;
-    e.preventDefault();
-    document.body.classList.remove("fade-in");
-    setTimeout(() => location.href = href, 300);
-  });
-});
-</script>
+        ctx.fillText(text, x, y);
 
+        if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 60);
+  </script>
 </body>
 </html>
