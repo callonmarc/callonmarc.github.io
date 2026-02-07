@@ -37,7 +37,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 5rem;
-  padding: 0;
+  padding: 5;
   background: transparent;
   backdrop-filter: none;
   border: none;
