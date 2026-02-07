@@ -373,4 +373,27 @@ h2 {
     font-size: 1.1rem;
   }
 }
+/* Floating animation for batman-hero - gentle drift on right side */
+.batman-hero {
+  animation: float-hero 18s ease-in-out infinite; /* Add this line if not already present */
+  transform-origin: center right; /* Anchor to right side */
+}
+
+@keyframes float-hero {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateX(6%) translateY(-4%) rotate(1.5deg) scale(1.02);
+  }
+  50% {
+    transform: translateX(0) translateY(8%) rotate(0deg) scale(1.01);
+  }
+  75% {
+    transform: translateX(-4%) translateY(-6%) rotate(-1.5deg) scale(1.03);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+  }
+}
 
