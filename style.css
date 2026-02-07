@@ -168,11 +168,11 @@ h2 {
 .bubbles-container {
   position: absolute;
   bottom: 5%;
-  right: -8%; /* Right side */
+  right: -4%; /* Right side */
   display: flex;
   flex-wrap: wrap;
-  gap: 2.5rem;
-  max-width: 40%;
+  gap: 2.2rem;
+  max-width: 37%;
   z-index: 5;
 }
 
