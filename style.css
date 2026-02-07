@@ -1,3 +1,6 @@
+/* style.css - Clean, consistent version for your Batcave portfolio (Feb 2026) */
+
+/* Reset & Base */
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +15,7 @@ body {
   min-height: 100vh;
 }
 
+/* Matrix Rain Canvas */
 #matrix {
   position: fixed;
   top: 0;
@@ -21,6 +25,7 @@ body {
   z-index: -3;
 }
 
+/* Dark Overlay */
 .overlay {
   position: fixed;
   inset: 0;
@@ -29,6 +34,7 @@ body {
   pointer-events: none;
 }
 
+/* Floating Top Nav - pure white glowing text, no background/blur/bar */
 .top-nav {
   position: fixed;
   top: 0;
@@ -38,7 +44,7 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 1.8rem 4rem;
+  padding: 1.8rem 5rem;
   background: transparent;
   backdrop-filter: none;
   border-bottom: none;
@@ -78,6 +84,13 @@ body {
 
 .nav-links a:hover::after {
   width: 100%;
+}
+
+/* Active page highlight */
+.nav-links a.active {
+  color: #ffffff;
+  text-shadow: 0 0 24px #ffffff, 0 0 48px #ffffff;
+  border-bottom: 2px solid #ffffff;
 }
 
 /* Hero layout - text far left, figure far right */
@@ -163,11 +176,11 @@ h2 {
   opacity: 0.22;
 }
 
-/* Projects page bubbles */
+/* Projects page bubbles - on right side, below figure */
 .bubbles-container {
   position: absolute;
   bottom: 15%;
-  right: 8%; /* Right side */
+  right: 8%;
   display: flex;
   flex-wrap: wrap;
   gap: 2.5rem;
@@ -200,7 +213,7 @@ h2 {
 }
 
 .bubble-logo {
-  width: 70%; /* Centered logo */
+  width: 70%;
   height: auto;
   filter: drop-shadow(0 0 15px #0f0);
   margin-bottom: 1rem;
@@ -222,29 +235,7 @@ h2 {
   50% { transform: translateY(-12px); }
 }
 
-/* About page unique style - bio section */
-.bio-section {
-  position: relative;
-  z-index: 5;
-  max-width: 800px;
-  margin: 6rem auto 4rem;
-  padding: 0 2rem;
-  text-align: center;
-  color: #ddd;
-  font-size: 1.2rem;
-  line-height: 1.7;
-}
-
-.bio-image {
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  box-shadow: 0 0 40px rgba(0,255,136,0.4);
-  margin-bottom: 2rem;
-  border: 3px solid rgba(0,255,136,0.3);
-}
-
-/* Mobile */
+/* Mobile adjustments */
 @media (max-width: 768px) {
   .top-nav {
     padding: 1.2rem 2rem;
@@ -280,16 +271,6 @@ h2 {
   }
 
   .bubble {
-    width: 180px;
-    height: 180px;
-  }
-
-  .bio-section {
-    margin: 4rem auto 2rem;
-    padding: 0 1.5rem;
-  }
-
-  .bio-image {
     width: 180px;
     height: 180px;
   }
