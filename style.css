@@ -1,12 +1,13 @@
-/* style.css - Full rewrite for your Batcave portfolio */
+/* style.css - Full rewrite for clean cyberpunk Batcave */
 
-/* Reset & Base */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Base */
 body {
   background: #000;
   color: #fff;
@@ -15,7 +16,7 @@ body {
   min-height: 100vh;
 }
 
-/* Matrix Rain Canvas */
+/* Matrix Rain */
 #matrix {
   position: fixed;
   top: 0;
@@ -34,7 +35,7 @@ body {
   pointer-events: none;
 }
 
-/* Floating Top Nav - No background, pure white glowing text */
+/* Floating Top Nav - pure white text, no background or blur */
 .top-nav {
   position: fixed;
   top: 0;
@@ -42,9 +43,9 @@ body {
   right: 0;
   z-index: 100;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding: 1.8rem 0;
+  padding: 1.8rem 5rem;
   background: transparent;
   backdrop-filter: none;
   border-bottom: none;
@@ -93,14 +94,14 @@ body {
   border-bottom: 2px solid #ffffff;
 }
 
-/* Hero Section - Main layout: text left, batman right */
+/* Hero layout */
 .hero {
   position: relative;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10rem 0 6rem; /* Left space for text, right for batman */
+  padding: 0 10rem 0 6rem; /* Left space for text, right for figure */
 }
 
 .batman-hero {
@@ -109,8 +110,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: right -8%; /* Pushed far right - adjust -10% / -12% if needed */
-  opacity: 0.78;
+  object-position: right -8%; /* Far right - adjust -10% / -12% if needed */
+  opacity: 0.80;
   pointer-events: none;
   z-index: 1;
   filter:
@@ -123,16 +124,16 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.72; }
-  50% { opacity: 0.84; }
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 0.85; }
 }
 
-/* Text on left - smaller, pure white glow */
+/* Text block on left - smaller, white glow, no cutoff */
 .title-left {
   z-index: 5;
   text-align: left;
   max-width: 38%;
-  margin-left: 2rem; /* Small inset from left edge - increase to 4rem if needed */
+  margin-left: 2rem; /* Adjust this to push left (0rem = flush left, 4rem = inset) */
 }
 
 h1 {
@@ -146,7 +147,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(2.8rem, 6vw, 6rem);
+  font-size: clamp(2.8rem, 6vw, 6rem); /* Smaller than h1 */
   color: #ffffff;
   text-shadow: 0 0 18px #ffffff, 0 0 36px #ffffff;
   margin: 0 0 1.8rem 0;
@@ -162,7 +163,7 @@ h2 {
   white-space: nowrap;
 }
 
-/* Scattered code snippets - subtle */
+/* Scattered code snippets */
 .code-float {
   position: absolute;
   color: #004d33;
@@ -175,35 +176,10 @@ h2 {
   opacity: 0.22;
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .top-nav {
-    padding: 1.2rem 2rem;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .hero {
-    justify-content: center;
-    padding: 0 2rem;
-    text-align: center;
-  }
-
-  .title-left {
-    text-align: center;
-    max-width: 90%;
-    margin-left: 0;
-  }
-
-  h1 { font-size: clamp(4.5rem, 14vw, 8rem); }
-  h2 { font-size: clamp(2.5rem, 9vw, 6rem); }
-  .tagline { font-size: 1.5rem; white-space: normal; line-height: 1.5; }
-}
-
 /* Projects page bubbles */
 .bubbles-container {
   position: absolute;
-  bottom: 12%;
+  bottom: 15%;
   left: 18%;
   display: flex;
   flex-wrap: wrap;
@@ -217,26 +193,33 @@ h2 {
   border-radius: 50%;
   padding: 1.8rem;
   text-align: center;
-  width: 210px;
-  height: 210px;
+  width: 220px;
+  height: 220px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0 0 30px rgba(0,255,136,0.35);
+  align-items: center;
+  box-shadow: 0 0 30px rgba(0,255,136,0.4);
   transition: all 0.4s ease;
   animation: bubble-float 6s ease-in-out infinite;
 }
 
 .bubble:hover {
-  box-shadow: 0 0 50px rgba(0,255,136,0.55);
-  transform: scale(1.08);
+  box-shadow: 0 0 50px rgba(0,255,136,0.6);
+  transform: scale(1.1);
+}
+
+.bubble-logo {
+  width: 70%;
+  height: auto;
+  filter: drop-shadow(0 0 15px #0f0);
+  margin-bottom: 1rem;
 }
 
 .bubble h3 {
-  color: #fff;
-  text-shadow: 0 0 12px #ffffff;
-  margin-bottom: 0.6rem;
   font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px #ffffff;
 }
 
 .bubble p {
@@ -244,42 +227,6 @@ h2 {
   color: #ddd;
 }
 
-/* Logo bubble - clickable main entry */
-.logo-bubble {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #fff;
-  background: rgba(0,0,0,0.55);
-  border-radius: 50%;
-  padding: 2rem;
-  width: 240px;
-  height: 240px;
-  box-shadow: 0 0 35px rgba(0,255,136,0.4);
-  transition: all 0.4s ease;
-  animation: bubble-float 6.5s ease-in-out infinite;
-}
-
-.logo-bubble:hover {
-  box-shadow: 0 0 60px rgba(0,255,136,0.6);
-  transform: scale(1.1);
-}
-
-.bubble-logo {
-  width: 75%;
-  height: auto;
-  filter: drop-shadow(0 0 15px #0f0);
-  margin-bottom: 1rem;
-}
-
-.logo-bubble p {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  text-shadow: 0 0 8px #ffffff;
-}
-
-/* Floating animation */
 @keyframes bubble-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
@@ -309,7 +256,7 @@ h2 {
   h2 { font-size: clamp(2.5rem, 9vw, 6rem); }
   .tagline { font-size: 1.5rem; white-space: normal; line-height: 1.5; }
 
-  .bubbles-container, .logo-bubble-container {
+  .bubbles-container {
     position: relative;
     bottom: auto;
     left: auto;
@@ -318,8 +265,8 @@ h2 {
     justify-content: center;
   }
 
-  .bubble, .logo-bubble {
-    width: 160px;
-    height: 160px;
+  .bubble {
+    width: 180px;
+    height: 180px;
   }
 }
