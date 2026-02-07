@@ -6,7 +6,7 @@
 
 body {
   background: #000;
-  color: #00ff88; /* More professional green tone, less cyan */
+  color: #ffffff; /* White base for text */
   font-family: 'Orbitron', sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
@@ -21,12 +21,12 @@ body {
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.62); /* Darker for better figure pop */
+  background: rgba(0, 0, 0, 0.65); /* Darker to make white text + Batman pop */
   z-index: -2;
   pointer-events: none;
 }
 
-/* Top horizontal nav – simple, clean, no thick bar */
+/* Top nav – floating, minimal, reference exact */
 .top-nav {
   position: fixed;
   top: 0;
@@ -36,10 +36,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.8rem 5rem;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 255, 136, 0.2); /* Very faint line */
+  padding: 2rem 6rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  border-bottom: none; /* No black bar */
 }
 
 .nav-links {
@@ -52,27 +52,27 @@ body {
   text-decoration: none;
   font-family: 'Roboto Mono', monospace;
   font-size: 1.1rem;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  text-shadow: 0 0 6px #0f0;
-  transition: all 0.3s;
+  text-shadow: 0 0 10px #0f0;
+  transition: all 0.4s;
   position: relative;
 }
 
 .nav-links a:hover {
-  color: #00ffaa;
-  text-shadow: 0 0 12px #0f0;
+  color: #00ffcc;
+  text-shadow: 0 0 20px #0ff;
 }
 
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: -6px;
+  bottom: -8px;
   left: 0;
   width: 0;
-  height: 1px;
-  background: #00ffaa;
-  transition: width 0.4s;
+  height: 2px;
+  background: #00ffcc;
+  transition: width 0.4s ease;
 }
 
 .nav-links a:hover::after {
@@ -81,18 +81,18 @@ body {
 
 .search-icon {
   color: #00ff88;
-  font-size: 1.3rem;
-  text-shadow: 0 0 8px #0f0;
+  font-size: 1.4rem;
+  text-shadow: 0 0 10px #0f0;
   cursor: default;
 }
 
-/* Main hero with Batman right, text left */
+/* Hero: Batman right, text left */
 .hero {
   position: relative;
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 0 8rem 0 6rem;
 }
 
@@ -102,95 +102,97 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: right center; /* Bias to right side */
-  opacity: 0.68;
+  object-position: right center;
+  opacity: 0.70;
   pointer-events: none;
   z-index: 1;
   filter:
-    brightness(2.2)
+    brightness(2.3)
     contrast(1.5)
-    drop-shadow(0 0 120px #0f0)
-    drop-shadow(0 0 240px #0f0);
+    drop-shadow(0 0 130px #0f0)
+    drop-shadow(0 0 260px #0f0);
   mix-blend-mode: screen;
-  animation: glowPulse 16s ease-in-out infinite;
+  animation: glowPulse 18s ease-in-out infinite;
 }
 
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.62; }
-  50%      { opacity: 0.74; }
+  0%, 100% { opacity: 0.65; }
+  50%      { opacity: 0.78; }
 }
 
-/* Text on left side, left-aligned, professional tone */
+/* Text on left – glowing white, professional */
 .title-content {
   z-index: 5;
   text-align: left;
-  max-width: 45%;
+  max-width: 40%;
 }
 
 h1 {
-  font-size: clamp(6rem, 11vw, 10rem);
-  color: #00ff99;
-  text-shadow: 0 0 20px #0f0, 0 0 40px #0f0;
-  line-height: 0.9;
-  letter-spacing: -4px;
-  margin: 0 0 1rem;
+  font-size: clamp(7rem, 12vw, 11rem);
+  color: #ffffff;
+  text-shadow: 0 0 25px #ffffff, 0 0 50px #ffffff, 0 0 80px #00ff88;
+  line-height: 0.85;
+  letter-spacing: -6px;
+  margin: 0 0 0.5rem;
   mix-blend-mode: screen;
 }
 
 h2 {
-  font-size: clamp(3.5rem, 7vw, 7rem);
-  color: #00ff88;
-  text-shadow: 0 0 15px #0f0, 0 0 30px #0f0;
+  font-size: clamp(4rem, 8vw, 8rem);
+  color: #ffffff;
+  text-shadow: 0 0 20px #ffffff, 0 0 40px #00ff88;
   margin: 0 0 2rem;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
 }
 
 .subtitle {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  color: #00ffaa;
-  text-shadow: 0 0 10px #0f0;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: #dddddd;
+  text-shadow: 0 0 10px #00ff88;
   letter-spacing: 2px;
-  opacity: 0.95;
+  opacity: 0.9;
 }
 
-/* Scattered code – minimal */
+/* Scattered code – very low key */
 .code-snippet {
   position: absolute;
-  color: #006633;
+  color: #004d33;
   font-family: 'Roboto Mono', monospace;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   pointer-events: none;
   white-space: pre;
-  text-shadow: 0 0 6px #0f0;
+  text-shadow: 0 0 5px #0f0;
   z-index: 3;
-  opacity: 0.32;
+  opacity: 0.28;
 }
 
-/* Desktop refinements */
+/* Desktop tweaks */
 @media (min-width: 1024px) {
   .top-nav {
-    padding: 2rem 8rem;
+    padding: 2.5rem 10rem;
   }
 
   .nav-links a {
     font-size: 1.25rem;
   }
 
-  h1 { font-size: clamp(9rem, 13vw, 13rem); }
-  h2 { font-size: clamp(5rem, 9vw, 10rem); }
-  .subtitle { font-size: clamp(2rem, 3.5vw, 3rem); }
+  h1 { font-size: clamp(10rem, 14vw, 14rem); }
+  h2 { font-size: clamp(6rem, 10vw, 11rem); }
+  .subtitle { font-size: clamp(2.2rem, 3.5vw, 3.5rem); }
 
   .hero {
-    padding: 0 10rem 0 8rem;
+    padding: 0 12rem 0 10rem;
   }
 }
 
-/* Mobile – stack nav top, center text */
+/* Mobile – center everything, top nav stays horizontal */
 @media (max-width: 768px) {
   .top-nav {
-    flex-direction: row;
+    padding: 1.5rem 2rem;
     justify-content: center;
-    padding: 1.2rem 2rem;
+  }
+
+  .nav-links {
     gap: 2rem;
   }
 
@@ -207,14 +209,14 @@ h2 {
     max-width: 90%;
   }
 
-  h1 { font-size: clamp(5rem, 15vw, 10rem); }
+  h1 { font-size: clamp(5rem, 16vw, 10rem); }
   h2 { font-size: clamp(3rem, 10vw, 7rem); }
   .subtitle { font-size: 1.6rem; }
 }
 
 /* Fade-in */
 body.loaded {
-  animation: fadeIn 1.8s ease-out;
+  animation: fadeIn 2s ease-out;
 }
 
 @keyframes fadeIn {
