@@ -167,7 +167,7 @@ h2 {
 /* Bubbles on right side - below figure, no overlap */
 .bubbles-container {
   position: absolute;
-  bottom: 15%;
+  bottom: 35%;
   right: 8%; /* Right side */
   display: flex;
   flex-wrap: wrap;
