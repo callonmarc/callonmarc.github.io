@@ -108,9 +108,9 @@ body {
   position: absolute;
   top: 70px;               /* ABOVE TEXT */
   left: 50%;
-  width: 160px;
+  width: 120px;
   transform: translateX(-50%);
-  z-index: 4;
+  z-index: 3;
 
   filter: drop-shadow(0 0 14px rgba(0,255,0,0.45));
   animation: float 6s ease-in-out infinite;
