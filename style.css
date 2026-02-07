@@ -27,21 +27,21 @@ body {
   pointer-events: none;
 }
 
-/* Nav: pure floating white text, no bg/blur/border */
 .top-nav {
   position: fixed;
-  top: 1.5rem;
-  left: 0;
-  right: 2;
+  top: 0;
+  left: 4rem;              /* ← change this number to move right/left */
+  right: auto;             /* stops it from stretching full-width */
   z-index: 100;
   display: flex;
-  justify-content: center;
-  gap: 5rem;
-  padding: 0;
+  flex-direction: column;  /* if vertical nav, or row if horizontal */
+  gap: 2rem;
+  padding: 2rem 1.5rem;
   background: transparent;
   backdrop-filter: none;
   border: none;
 }
+
 
 .nav-links a {
   color: #ffffff;
