@@ -134,7 +134,7 @@ body {
   text-align: left;
   max-width: 35%;
   margin-left: 0; /* Flush left */
-  margin-top: -6rem; /* Pulled up slightly */
+  margin-top: 3rem; /* Pulled up slightly */
 }
 
 h1 {
@@ -168,7 +168,7 @@ h2 {
 .bubbles-container {
   position: absolute;
   bottom: 5%;
-  right: 17%; /* Right side */
+  right: -8%; /* Right side */
   display: flex;
   flex-wrap: wrap;
   gap: 2.5rem;
