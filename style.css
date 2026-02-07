@@ -100,7 +100,7 @@ body {
     contrast(1.6)
     drop-shadow(0 0 180px #0f0)
     drop-shadow(0 0 360px #0f0);
-  mix-blend-mode: screen;
+  mix-blend-mode: none;
   animation: pulse 20s ease-in-out infinite;
 }
 
